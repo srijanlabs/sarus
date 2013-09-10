@@ -18,8 +18,12 @@ angular.module('myApp.controllers', []).
 
   }).
   controller('MyCtrl1', function ($scope) {
-    // write Ctrl here
-
+    // Scroll to set alert
+    window.onscroll = function(ev) {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        alert("you're at the bottom of the page");
+      }
+    };
   }).
   controller('MyCtrl2', function ($scope) {
     // write Ctrl here
