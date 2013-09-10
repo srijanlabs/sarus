@@ -17,11 +17,12 @@ angular.module('myApp.controllers', []).
     });
 
   }).
-  controller('MyCtrl1', function ($scope) {
+  controller('MyCtrl1', function ($scope, $location) {
     // Scroll to set alert
     window.onscroll = function(ev) {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        alert("you're at the bottom of the page");
+        $location.path('/view2');
+        $scope.$apply();
       }
     };
   }).
