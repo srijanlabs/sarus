@@ -14,8 +14,10 @@ angular.module('two1App.controllers', []).
         }).success(function(data, status) {
             $scope.posts = data;
         });
-
     };
+
+
+    $scope.loadPosts();
 
     $scope.changeUrl = function(slug){
         $location.path("/"+slug)
