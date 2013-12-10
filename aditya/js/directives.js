@@ -18,7 +18,6 @@ angular.module('two1App.directives', []).
                     window.onscroll = function(ev) {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                 scope.$apply(attr.scrollLoad);
-                debugger;
             }
           }
         //});
