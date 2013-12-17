@@ -48,8 +48,5 @@ angular.module('two1App.controllers', []).
     }
 
 }).controller('ShowController', function ($scope, $location, $routeParams) {
-    //console.log($location.path());
     $scope.slug = $location.path();
-    //var param = $routeParams.slug
-    
 });
