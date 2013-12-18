@@ -4,7 +4,8 @@ var app = angular.module('two1App', [
   'two1App.controllers',
   // 'myApp.filters',
   // 'myApp.services',
-  'two1App.directives'
+  'two1App.directives',
+  'ngSanitize'
 ]).// Route configuration below
 config(function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);//Required to avoid urls with # anchor tags
