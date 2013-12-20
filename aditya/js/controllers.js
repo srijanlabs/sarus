@@ -16,30 +16,23 @@ var takeStartingAt = function (data, start) {
 };
 
 /* Controllers */
-
-angular.module('two1App.controllers', []).
-  controller('PostsController', function ($scope, $location, $http, $routeParams) {
+angular.module('two1App.controllers', []).controller('PostsController', function ($scope, $location, $http, $routeParams) {
     //if($location.path()!= "/"){return} // So that this code is not executed when we get a slug !!
     $scope.loadPosts = function() {
+      $scope.posts = [];
+        $http.defaults.useXDomain = true;
         var httpRequest = $http({
-            method: 'POST',
-            url: 'json/data.json',
-            //data: mockDataForThisTest
-
+            method: 'GET',
+            url: 'http://qz.local:3000/0'
         }).success(function(data, status) {
             if($location.path()!= "/"){
-                
                 var slug = $location.path().replace("/", "");
                 $scope.slug = slug;
-                console.log(slug);
                 data = takeStartingAt(data, slug)
             }
-            $scope.posts = data;
-
-
+            $scope.posts.push(data);
         });
     };
-
 
     $scope.loadPosts();
 
@@ -47,6 +40,16 @@ angular.module('two1App.controllers', []).
         $location.path("/"+slug)
     }
 
-}).controller('ShowController', function ($scope, $location, $routeParams) {
-    $scope.slug = $location.path();
+    var cnt = 0;
+    $scope.loadNext = function(){
+      cnt +=1;
+      $http.defaults.useXDomain = true;
+      var httpRequest = $http({
+          method: 'GET',
+          url: 'http://qz.local:3000/'+cnt,
+      }).success(function(data, status) {
+              $scope.posts.push(data);
+      });
+    };
+
 });
