@@ -52,4 +52,10 @@ angular.module('two1App.controllers', []).controller('PostsController', function
       });
     };
 
+    $scope.getSlug = function( str ) {
+      return str.split( "/" ).filter(function( n ) {
+        return n; // What is this supposed to do?
+      }).reverse()[ 0 ];
+    };
+
 });
