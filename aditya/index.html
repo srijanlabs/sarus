@@ -34,7 +34,7 @@
 	  
 	<!-- <p>    Click <a ng-click="loadPosts()">here</a> to load data.</p> -->
 		<div ng-repeat="post in posts track by $index">
-			<h1 class='title'><a href="/{{post.url}}" in-view="changeUrl('{{getSlug(post.url)}}', $index, $inview, $inviewpart)" in-view-offset="0">{{post.title}}</a></h1>
+			<h1 class='title'><a href="/{{getSlug(post.url)}}" in-view="changeUrl('{{getSlug(post.url)}}', $index, $inview, $inviewpart)" in-view-offset="0">{{post.title}}</a></h1>
 			<div class='post' ng-bind-html="post.summary"></div>
 		</div>
 <div in-view="loadNext($inview);" in-view-offset="100" id="loading"></div>
