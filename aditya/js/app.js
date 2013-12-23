@@ -13,7 +13,7 @@ config(function ($routeProvider, $locationProvider) {
   $routeProvider.
 
     when('/:slug', {
-      templateUrl: 'partials/post',
+      //templateUrl: 'partials/post',
       controller: 'PostController'
     }).
     otherwise({

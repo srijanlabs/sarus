@@ -15,21 +15,20 @@ var takeStartingAt = function (data, start) {
   return result;
 };
 
+var endpoint = "http://qz.local:3000"
 /* Controllers */
 angular.module('two1App.controllers', []).controller('PostsController', function ($scope, $location, $http, $routeParams) {
-    //if($location.path()!= "/"){return} // So that this code is not executed when we get a slug !!
+    if($location.path()!= "/"){
+      endpoint = endpoint + "/offset" + $location.path();      
+    }
+    console.log(endpoint);
     $scope.loadPosts = function() {
       $scope.posts = [];
         $http.defaults.useXDomain = true;
         var httpRequest = $http({
             method: 'GET',
-            url: 'http://qz.local:3000/0'
+            url: endpoint+"/"+0
         }).success(function(data, status) {
-            if($location.path()!= "/"){
-                var slug = $location.path().replace("/", "");
-                $scope.slug = slug;
-                data = takeStartingAt(data, slug)
-            }
             $scope.posts.push(data);
         });
     };
@@ -52,12 +51,13 @@ angular.module('two1App.controllers', []).controller('PostsController', function
 
     var cnt = 0;
     $scope.loadNext = function(inview){
+      if(document.body.scrollTop == 0){return false;}
       if(inview == false){return false;}
       cnt +=1;
       $http.defaults.useXDomain = true;
       var httpRequest = $http({
           method: 'GET',
-          url: 'http://qz.local:3000/'+cnt,
+          url: endpoint+"/"+cnt,
       }).success(function(data, status) {
               if(data == ""){return false;}
               $scope.posts.push(data);
