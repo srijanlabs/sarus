@@ -38,6 +38,7 @@ angular.module('two1App.controllers', []).controller('PostsController', function
 
     var slugs = [];
     $scope.changeUrl = function(slug, index, inview, inviewpart){
+      if(document.body.scrollTop == 0){return false;}
       slugs[index] = slug;
       if(inview == true){
         $location.path("/"+slug);
