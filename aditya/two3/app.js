@@ -19,6 +19,7 @@ app.get('/:count', function(req, res, next){
     //var request = require('request');
     //var resp = request.get(feed_url).auth('j2r@srijan.in', '123', false);
 	parser.parseURL(feed_url, options, function(err, out){
+      if(out == null){console.log("Request failed !!");return false;}
 	  var count = req.params.count;
 	  var article = count != "all" ? out.items[count] : out.items;
 	  res.writeHead(200, {'Content-Type': 'application/json'});
