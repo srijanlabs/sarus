@@ -7,6 +7,12 @@ angular.module('two1App.directives', []).
     return function(scope, elm, attrs) {
       elm.text(version);
     };
+  }).directive('repeatDone', function() {
+    return function(scope, element, attrs) {
+      if (scope.$last) { // all are rendered
+        scope.$eval(attrs.repeatDone);
+      }
+    }
   }).
   directive('scrollLoad', function () {
           return function (scope, elm, attr) {

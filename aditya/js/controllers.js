@@ -16,8 +16,9 @@ var takeStartingAt = function (data, start) {
 };
 
 var endpoint = "http://qz.local:3000"
+var oEndpoint = "http://qz.local:3000"
 /* Controllers */
-angular.module('two1App.controllers', []).controller('PostsController', function ($scope, $location, $http, $routeParams) {
+angular.module('two1App.controllers', []).controller('PostsController', function ($scope, $location, $http, $routeParams, $element, $timeout) {
     if($location.path()!= "/"){
       endpoint = endpoint + "/offset" + $location.path();      
     }
@@ -31,8 +32,26 @@ angular.module('two1App.controllers', []).controller('PostsController', function
         }).success(function(data, status) {
             $scope.posts.push(data);
         });
+        
     };
 
+    $scope.updateShareThis = function(){
+      $timeout(function() { 
+        if (stButtons){stButtons.locateElements();}
+       }, 0);
+    };
+
+    $scope.loadTitles = function($element){
+        $scope.titles = [];
+        $http.defaults.useXDomain = true;
+        var httpRequest = $http({
+            method: 'GET',
+            url: oEndpoint+"/slugs/0/10"
+        }).success(function(data, status) {
+            $scope.titles = data;
+        });
+    };
+    $scope.loadTitles();
     $scope.loadPosts();
 
     var slugs = [];
@@ -42,11 +61,12 @@ angular.module('two1App.controllers', []).controller('PostsController', function
       if(inview == true){
         $location.path("/"+slug);
       }
-      console.log("s: "+ slug +" v:"+inview+ " p:"+inviewpart);
+      //console.log("s: "+ slug +" v:"+inview+ " p:"+inviewpart);
       var pslug = slugs[index-1];
       if(inview == false && angular.isUndefined(pslug) == false){ // Assuming that inview false means that the current slug is going out of the view by scrolling up
         $location.path("/"+pslug);
       }
+
     };
 
     var cnt = 0;
@@ -61,7 +81,9 @@ angular.module('two1App.controllers', []).controller('PostsController', function
       }).success(function(data, status) {
               if(data == ""){return false;}
               $scope.posts.push(data);
+              //if (stButtons){stButtons.locateElements();}
       });
+
     };
 
     $scope.getSlug = function( str ) {
@@ -70,5 +92,10 @@ angular.module('two1App.controllers', []).controller('PostsController', function
         return n; // What is this supposed to do?
       }).reverse()[ 0 ];
     };
+
+    $scope.slugClass = function(slug){
+      return {active: slug == $location.path().replace("/" , "")};
+    };
+
 
 });

@@ -28,17 +28,43 @@
 		  };
 		});
 	</script>
+
+	<!-- share this scripts below -->
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "ddf4fd18-8689-49ad-8898-f9707e2e85bf", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 <body ng-controller="PostsController">
- <div>
-	  
-	<!-- <p>    Click <a ng-click="loadPosts()">here</a> to load data.</p> -->
-		<div ng-repeat="post in posts track by $index">
-			<h1 class='title'><a href="/{{getSlug(post.url)}}" in-view="changeUrl('{{getSlug(post.url)}}', $index, $inview, $inviewpart)" in-view-offset="0">{{post.title}}</a></h1>
-			<div class='post' ng-bind-html="post.summary"></div>
-		</div>
-<div in-view="loadNext($inview);" in-view-offset="100" id="loading"></div>
-</div>
+<div id="content">
+	 <div id="left">
+	 	<div ng-repeat="item in titles track by $index" ng-class="slugClass(getSlug(item.url))">
+	 		<a href="/{{getSlug(item.url)}}" id="sidebar-{{getSlug(item.url)}}" class="sidebar-links">{{item.title + info.currentSlug}}</a>
+	 	</div>
+	 </div>
+	 <div id="right">
+		  
+		<!-- <p>    Click <a ng-click="loadPosts()">here</a> to load data.</p> -->
+			<div ng-repeat="post in posts track by $index" repeat-done="updateShareThis();">
+				<h1 class='title'><a href="/{{getSlug(post.url)}}" in-view="changeUrl('{{getSlug(post.url)}}', $index, $inview, $inviewpart)" in-view-offset="0">{{post.title}}</a></h1>
+				<div class='post'>
 
+					<div ng-bind-html="post.summary"></div>
+
+					<!-- social buttons being -->
+					<span class='st_sharethis_large' displayText='ShareThis'></span>
+					<span class='st_facebook_large' displayText='Facebook'></span>
+					<span class='st_twitter_large' displayText='Tweet'></span>
+					<span class='st_linkedin_large' displayText='LinkedIn'></span>
+					<span class='st_pinterest_large' displayText='Pinterest'></span>
+					<span class='st_email_large' displayText='Email'></span>
+					<span class='st_fblike_large' displayText='Facebook Like'></span>
+					<span class='st_plusone_large' displayText='Google +1'></span>
+					<span class='st_reddit_large' displayText='Reddit'></span>
+					<!-- social buttons ends -->
+				</div>
+			</div>
+	<div in-view="loadNext($inview);" in-view-offset="100" id="loading"></div>
+	</div>
+</div>
 </body>
 </html>
