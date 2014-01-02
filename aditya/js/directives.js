@@ -27,5 +27,41 @@ angular.module('two1App.directives', []).
                       }
                     }
           }
-
   });
+  // .directive('ngDisqus', function() {
+  //   return function(scope, element, attrs) {
+  //     if (scope.$last) { // all are rendered
+  //     //scope.$eval(console.log(attrs.ngDisqus));
+  
+  //         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  //         var disqus_shortname  = 'srijantech'; // required: replace example with your forum shortname
+  //         var disqus_identifier = attrs.didentifier;
+  //         var disqus_title      = attrs.dtitle;
+  //         var disqus_url        = attrs.durl;
+
+  //         DISQUS.reset({
+  //           reload: true,
+  //           config: function () {  
+  //             console.log(disqus_identifier);
+  //             this.page.identifier = disqus_identifier;  
+  //             this.page.url = disqus_url;
+  //           }
+  //         });
+
+  //         // (function() {
+  //         //  console.log(disqus_identifier);
+  //         //     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  //         //     dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+  //         //     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  //         // })();
+
+
+  //         // /* * * DON'T EDIT BELOW THIS LINE * * */
+  //         // (function() {
+  //         //     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  //         //     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  //         //     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  //         // }) (); 
+  //     }
+  //   }
+  // });

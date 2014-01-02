@@ -1,6 +1,6 @@
 var parser = require('rssparser');
 var feed_url = "http://staging.srijan7v2.srijan-sites.com/blog-feeds.xml"//"http://feeds.feedburner.com/SrijanBlogsdevsite";
-var options = {'auth': {'user': "j2r@srijan.in", 'pass': "123", 'sendImmediately': false}};
+var options = {'auth': {'user': "staging", 'pass': "srijan", 'sendImmediately': false}};
 var http = require('http');
 var express = require('express');
 var RequestCaching = require('node-request-caching');
