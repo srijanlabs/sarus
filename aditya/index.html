@@ -3,12 +3,14 @@
 	<base href="/" />
 	<link rel="stylesheet" type="text/css" href="/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
+	<script src="js/AjaxJSLoader.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-route.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-sanitize.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/directives.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="/bower_components/angular-inview/angular-inview.js"></script>
+	<script src="js/angular-disqus.js"></script>
 	<script>
 		app.directive('spy', function() {
 		  return {
@@ -28,17 +30,36 @@
 		  };
 		});
 	</script>
+
+	<!-- share this scripts below -->
+	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "ddf4fd18-8689-49ad-8898-f9707e2e85bf", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 </head>
 <body ng-controller="PostsController">
- <div>
-	  
-	<!-- <p>    Click <a ng-click="loadPosts()">here</a> to load data.</p> -->
-		<div ng-repeat="post in posts track by $index">
-			<h1 class='title'><a href="/{{getSlug(post.url)}}" in-view="changeUrl('{{getSlug(post.url)}}', $index, $inview, $inviewpart)" in-view-offset="0">{{post.title}}</a></h1>
-			<div class='post' ng-bind-html="post.summary"></div>
-		</div>
-<div in-view="loadNext($inview);" in-view-offset="100" id="loading"></div>
-</div>
+<div id="content">
+	 <div id="left">
+	 	<div ng-repeat="item in titles track by $index" ng-class="slugClass(getSlug(item.url))">
+	 		<a href="/{{getSlug(item.url)}}" id="sidebar-{{getSlug(item.url)}}" class="sidebar-links">{{item.title + info.currentSlug}}</a>
+	 	</div>
+	 </div>
+	 <div id="right">
+		  
+		<!-- <p>    Click <a ng-click="loadPosts()">here</a> to load data.</p> -->
+			<div ng-repeat="post in posts track by $index" repeat-done="updateShareThis();">
+				<h1 class='title'><a href="/{{getSlug(post.url)}}" in-view="changeUrl('{{getSlug(post.url)}}', $index, $inview, $inviewpart)" in-view-offset="0">{{post.title}}</a></h1>
+				<div class='post'>
 
+					<div ng-bind-html="post.summary"></div>
+
+					<div ng-include="'shared/_sharethis.html'"></div>
+
+					
+				</div>
+			</div>
+	<div in-view="loadNext($inview);" in-view-offset="600" id="loading"></div>
+	</div>
+</div>
+<script type="text/javascript" src="http://srijantech.disqus.com/embed.js"></script>
 </body>
 </html>
