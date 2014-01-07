@@ -37,13 +37,25 @@ var takeStartingAt = function (data, start) {
 
 var app = express();
 
+var feed = null;
+
+function getfeed(callback){
+  if(feed == null){
+    parser.parseURL(feed_url, options, function(err, out){
+      callback(err, out);
+      feed = out;
+      console.log('fetched');
+    });
+  }else{callback(false, feed); console.log('cached');}
+}
+
 app.configure(function(){app.use(allowCrossDomain);});
 
 app.get('/:count', function(req, res, next){
     //var request = require('request');
     //var resp = request.get(feed_url).auth('j2r@srijan.in', '123', false);
-	parser.parseURL(feed_url, options, function(err, out){
-      if(out == null){console.log("Request failed !!");return false;}
+	getfeed(function(err, out){
+    if(out == null){console.log("Request failed !!");return false;}
 	  var count = req.params.count;
 	  var article = count != "all" ? out.items[count] : out.items;
 	  res.writeHead(200, {'Content-Type': 'application/json'});

@@ -1,8 +1,5 @@
 'use strict';
 
-var disqus_shortname  = 'srijantech';
-var disqus_identifier = 'srijantech';  
-
 var takeStartingAt = function (data, start) {
   var result = [];
   var skip = true;
@@ -18,12 +15,14 @@ var takeStartingAt = function (data, start) {
   return result;
 };
 
-var endpoint = "http://two3-rss.nodejitsu.com"
-var oEndpoint = "http://two3-rss.nodejitsu.com"
+var endpoint = "http://two3-rss.nodejitsu.com"//"http://qz.local:3000"
+var oEndpoint = endpoint;
 /* Controllers */
 angular.module('two1App.controllers', []).controller('PostsController', function ($scope, $location, $http, $routeParams, $element, $timeout) {
-    if($location.path()!= "/"){
+    if($location.path().length > 0){
       endpoint = endpoint + "/offset" + $location.path();      
+      //console.log(endpoint);
+      //console.log($location.path().length);
     }
     //console.log(endpoint);
     $scope.loadPosts = function() {
@@ -89,7 +88,6 @@ angular.module('two1App.controllers', []).controller('PostsController', function
       }).success(function(data, status) {
               if(data == ""){return false;}
               $scope.posts.push(data);
-              //$scope.loadDisqus();
               //if (stButtons){stButtons.locateElements();}
       });
 
@@ -105,16 +103,5 @@ angular.module('two1App.controllers', []).controller('PostsController', function
     $scope.slugClass = function(slug){
       return {active: slug == $location.path().replace("/" , "")};
     };
-
-
-  $scope.loadDisqus = function()   {
-      DISQUS.reset({
-        reload: true,
-        config: function () {  
-          this.page.identifier = "";  
-          this.page.url = "http://example.com/#!newthread";
-        }
-      });
-  }
 
 });
