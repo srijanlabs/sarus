@@ -1,0 +1,24 @@
+{
+  "name": "two3",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@heroku.com:noderss.git"
+  },
+  "author": "Aditya Raj",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "rssparser": "0.0.4",
+    "express": "~3.4.7"
+  },
+  "subdomain": "two3-rss",
+  "engines": {
+    "node": "0.10.x"
+  }
+}
