@@ -1,6 +1,6 @@
 var parser = require('rssparser');
-var feed_url = "http://staging.srijan7v2.srijan-sites.com/blog-feeds.xml"//"http://feeds.feedburner.com/SrijanBlogsdevsite";
-var options = {'auth': {'user': "j2r@srijan.in", 'pass': "123", 'sendImmediately': false}};
+var feed_url = "http://staging.srijan7v2.srijan-sites.com/rss/"//"http://feeds.feedburner.com/SrijanBlogsdevsite";
+var options = {'auth': {'user': "staging", 'pass': "srijan", 'sendImmediately': false}};
 var http = require('http');
 var express = require('express');
 var RequestCaching = require('node-request-caching');
@@ -21,8 +21,6 @@ var getSlug = function( str ) {
 
 
 var takeStartingAt = function (data, start) {
-    console.log(data);
-    console.log(start);
   var result = [];
   var skip = true;
   for (var i = 0; i < data.length; i++) {
@@ -63,10 +61,26 @@ app.get('/offset/:slug/:count', function(req, res, next){
       var slug = req.params.slug;
       //console.log("count:"+count+" slug:"+slug);
       var offsetItems = takeStartingAt(out.items, slug);
-      console.log();
       var article = count != "all" ? offsetItems[count] : offsetItems;
       res.writeHead(200, {'Content-Type': 'application/json'});
       res.end(JSON.stringify(article, null, 2));
+    });
+});
+
+app.get('/slugs/:offset/:count', function(req, res, next){
+  var data = [];
+  parser.parseURL(feed_url, options, function(err, out){
+      if(out == null){console.log("Request failed !!");return false;}
+    var count = req.params.count;
+    var items = out.items;
+    var offset = 0;
+    for(var i = offset; i < items.length; i++){
+      var current = items[i];
+      data.push({'title': current.title, 'url': current.url, 'index': i});
+    }
+
+    res.writeHead(200, {'Content-Type': 'application/json'});
+      res.end(JSON.stringify(data, null, 2));
     });
 });
 
