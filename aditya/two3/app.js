@@ -1,10 +1,9 @@
 var parser = require('rssparser');
-var feed_url = "http://staging.srijan7v2.srijan-sites.com/rss/"//"http://feeds.feedburner.com/SrijanBlogsdevsite";
-var options = {'auth': {'user': "staging", 'pass': "srijan", 'sendImmediately': false}};
 var http = require('http');
 var express = require('express');
-var RequestCaching = require('node-request-caching');
-var rc = new RequestCaching();
+var feed_url = "http://staging.srijan7v2.srijan-sites.com/rss/";
+var options = {'auth': {'user': "staging", 'pass': "srijan", 'sendImmediately': false}};
+
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -38,13 +37,25 @@ var takeStartingAt = function (data, start) {
 
 var app = express();
 
+var feed = null;
+
+function getfeed(callback){
+  if(feed == null){
+    parser.parseURL(feed_url, options, function(err, out){
+      callback(err, out);
+      feed = out;
+      console.log('fetched');
+    });
+  }else{callback(false, feed); console.log('cached');}
+}
+
 app.configure(function(){app.use(allowCrossDomain);});
 
 app.get('/:count', function(req, res, next){
     //var request = require('request');
     //var resp = request.get(feed_url).auth('j2r@srijan.in', '123', false);
-	parser.parseURL(feed_url, options, function(err, out){
-      if(out == null){console.log("Request failed !!");return false;}
+	getfeed(function(err, out){
+    if(out == null){console.log("Request failed !!");return false;}
 	  var count = req.params.count;
 	  var article = count != "all" ? out.items[count] : out.items;
 	  res.writeHead(200, {'Content-Type': 'application/json'});
