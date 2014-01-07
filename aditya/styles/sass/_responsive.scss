@@ -1,0 +1,12 @@
+.container {
+  @include grid-row();
+
+  .article-stream {
+    @include grid-column($columns: 9, $float:right, $last-column:true);
+  }
+
+  .sidebar {
+    @include grid-column($columns: 3);
+    position: fixed;
+  }
+}
