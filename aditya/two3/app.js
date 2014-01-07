@@ -1,10 +1,9 @@
 var parser = require('rssparser');
-var feed_url = "http://staging.srijan7v2.srijan-sites.com/rss/"//"http://feeds.feedburner.com/SrijanBlogsdevsite";
-var options = {'auth': {'user': "staging", 'pass': "srijan", 'sendImmediately': false}};
 var http = require('http');
 var express = require('express');
-var RequestCaching = require('node-request-caching');
-var rc = new RequestCaching();
+var feed_url = "http://staging.srijan7v2.srijan-sites.com/rss/";
+var options = {'auth': {'user': "staging", 'pass': "srijan", 'sendImmediately': false}};
+
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');

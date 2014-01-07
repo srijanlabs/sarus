@@ -18,8 +18,8 @@ var takeStartingAt = function (data, start) {
   return result;
 };
 
-var endpoint = "http://qz.local:3000"
-var oEndpoint = "http://qz.local:3000"
+var endpoint = "http://two3-rss.nodejitsu.com"
+var oEndpoint = "http://two3-rss.nodejitsu.com"
 /* Controllers */
 angular.module('two1App.controllers', []).controller('PostsController', function ($scope, $location, $http, $routeParams, $element, $timeout) {
     if($location.path()!= "/"){
