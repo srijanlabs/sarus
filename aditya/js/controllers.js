@@ -19,10 +19,11 @@ var endpoint = "http://two3-rss.nodejitsu.com"//"http://qz.local:3000"
 var oEndpoint = endpoint;
 /* Controllers */
 angular.module('two1App.controllers', []).controller('PostsController', function ($scope, $location, $http, $routeParams, $element, $timeout) {
-    if($location.path().length > 0){
+    if($location.path().length > 1){
+      //debugger;
       endpoint = endpoint + "/offset" + $location.path();      
-      //console.log(endpoint);
-      //console.log($location.path().length);
+      console.log(endpoint);
+      console.log($location.path().length);
     }
     //console.log(endpoint);
     $scope.loadPosts = function() {
