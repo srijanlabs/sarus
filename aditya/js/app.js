@@ -9,7 +9,7 @@ var app = angular.module('two1App', [
   'ngLoadScript'
 
 ]).// Route configuration below
-config(function ($routeProvider, $locationProvider, $disqusProvider) {
+config(function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);//Required to avoid urls with # anchor tags
 
   $routeProvider.
