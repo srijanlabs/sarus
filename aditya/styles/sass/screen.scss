@@ -1,0 +1,57 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "normalize";
+@import "foundation";
+
+// Layout
+@import "responsive";
+
+// Components
+@import "components/spinner";
+
+
+
+/*****************/
+/* Custom Styles */
+/*****************/
+
+.article {
+  margin: 4rem 0;
+  border-top: 1px solid lightgray;
+
+  &:first-child {
+    border-top: none;
+    margin-top: 1rem;
+  }
+}
+
+.loader {
+  @extend %spinner;
+}
+
+.sidebar-links {
+  display: block;
+  width: 100%;
+  padding: 1rem 0.65rem;
+  border-bottom: 1px solid lightgray;
+  background-color: darken(white, 2%);
+
+  &:hover,
+  &:focus, {
+    background-color: white;
+  }
+
+  &:active {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+.article-list-item:last-child {
+  .sidebar-links {
+    border-bottom: none;
+  }
+}
