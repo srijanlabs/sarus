@@ -1,9 +1,7 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-
+// Standard Imports
 @import "normalize";
+
+// Zurb Foundation (http://foundation.zurb.com/)
 @import "foundation";
 
 // Layout
@@ -32,10 +30,16 @@
   @extend %spinner;
 }
 
+.sidebar {
+  height: 100%;
+  overflow: auto;
+  padding: 0;
+}
+
 .sidebar-links {
   display: block;
   width: 100%;
-  padding: 1rem 0.65rem;
+  padding: 1rem 1.5rem;
   border-bottom: 1px solid lightgray;
   background-color: darken(white, 2%);
 
@@ -44,7 +48,8 @@
     background-color: white;
   }
 
-  &:active {
+  &:active,
+  &.is-active {
     background-color: $primary-color;
     color: white;
   }

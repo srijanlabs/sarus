@@ -1,8 +1,4 @@
 @import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -8204,36 +8200,43 @@ th.hide-for-touch {
 /*****************/
 /* Custom Styles */
 /*****************/
-/* line 21, ../sass/screen.scss */
+/* line 19, ../sass/screen.scss */
 .article {
   margin: 4rem 0;
   border-top: 1px solid lightgray;
 }
-/* line 25, ../sass/screen.scss */
+/* line 23, ../sass/screen.scss */
 .article:first-child {
   border-top: none;
   margin-top: 1rem;
 }
 
-/* line 35, ../sass/screen.scss */
+/* line 33, ../sass/screen.scss */
+.sidebar {
+  height: 100%;
+  overflow: auto;
+  padding: 0;
+}
+
+/* line 39, ../sass/screen.scss */
 .sidebar-links {
   display: block;
   width: 100%;
-  padding: 1rem 0.65rem;
+  padding: 1rem 1.5rem;
   border-bottom: 1px solid lightgray;
   background-color: #fafafa;
 }
-/* line 43, ../sass/screen.scss */
+/* line 47, ../sass/screen.scss */
 .sidebar-links:hover, .sidebar-links:focus {
   background-color: white;
 }
-/* line 47, ../sass/screen.scss */
-.sidebar-links:active {
+/* line 52, ../sass/screen.scss */
+.sidebar-links:active, .sidebar-links.is-active {
   background-color: #008cba;
   color: white;
 }
 
-/* line 54, ../sass/screen.scss */
+/* line 59, ../sass/screen.scss */
 .article-list-item:last-child .sidebar-links {
   border-bottom: none;
 }
