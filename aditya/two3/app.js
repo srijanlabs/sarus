@@ -1,7 +1,7 @@
 var parser = require('rssparser');
 var http = require('http');
 var express = require('express');
-var feed_url = "http://staging.srijan7v2.srijan-sites.com/rss/";
+var feed_url = "http://staging.srijan7v2.srijan-sites.com/blog/feed";
 var options = {'auth': {'user': "staging", 'pass': "srijan", 'sendImmediately': false}};
 
 var allowCrossDomain = function(req, res, next) {
@@ -42,9 +42,9 @@ var feed = null;
 function getfeed(callback){
   if(feed == null){
     parser.parseURL(feed_url, options, function(err, out){
-      callback(err, out);
       feed = out;
       console.log('fetched');
+      callback(err, out);
       return false;
     });
   }else{callback(false, feed); console.log('cached');}
