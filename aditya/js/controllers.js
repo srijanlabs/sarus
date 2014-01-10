@@ -91,8 +91,7 @@ angular.module('two1App.controllers', []).controller('PostsController', function
 
     var cnt = 0;
     $scope.loadNext = function(inview){
-      //console.log("Loading..");
-      if(document.body.scrollTop == 0){return false;}
+      console.log(cnt);
       if(inview == false){return false;}
       cnt +=1;
       $http.defaults.useXDomain = true;
