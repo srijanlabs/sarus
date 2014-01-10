@@ -45,11 +45,22 @@ function getfeed(callback){
       callback(err, out);
       feed = out;
       console.log('fetched');
+      return false;
     });
   }else{callback(false, feed); console.log('cached');}
 }
 
 app.configure(function(){app.use(allowCrossDomain);});
+
+app.get('/clear', function(req, res,next){
+  feed = null;
+  getfeed(function(err, out){
+      res.writeHead(200, {'Content-Type': 'application/json'});
+      res.end(JSON.stringify(out, null, 2));
+    });
+  return false;
+});
+
 
 app.get('/:count', function(req, res, next){
     //var request = require('request');
@@ -66,7 +77,7 @@ app.get('/:count', function(req, res, next){
 app.get('/offset/:slug/:count', function(req, res, next){
     //var request = require('request');
     //var resp = request.get(feed_url).auth('j2r@srijan.in', '123', false);
-    parser.parseURL(feed_url, options, function(err, out){
+    getfeed(function(err, out){
       if(out == null){console.log("Request failed !!");return false;}
       var count = req.params.count;
       var slug = req.params.slug;
@@ -80,7 +91,7 @@ app.get('/offset/:slug/:count', function(req, res, next){
 
 app.get('/slugs/:offset/:count', function(req, res, next){
   var data = [];
-  parser.parseURL(feed_url, options, function(err, out){
+  getfeed(function(err, out){
       if(out == null){console.log("Request failed !!");return false;}
     var count = req.params.count;
     var items = out.items;
@@ -96,5 +107,3 @@ app.get('/slugs/:offset/:count', function(req, res, next){
 });
 
 app.listen(3000, '127.0.0.1');
-
-

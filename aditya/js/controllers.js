@@ -14,18 +14,23 @@ var takeStartingAt = function (data, start) {
   }
   return result;
 };
-
-var endpoint = "http://two3-rss.nodejitsu.com"//"http://qz.local:3000"
+//var endpoint = "http://two3-rss.nodejitsu.com"
+var endpoint = "http://qz.local:3000"
 var oEndpoint = endpoint;
 /* Controllers */
 angular.module('two1App.controllers', []).controller('PostsController', function ($scope, $location, $http, $routeParams, $element, $timeout) {
-    if($location.path().length > 1){
-      //debugger;
-      endpoint = endpoint + "/offset" + $location.path();      
+  $scope.slug_override = null;
+    $scope.setEndpoint = function(){
+      if($location.path().length > 1 || $scope.slug_override != null){
+        //debugger;
+        endpoint = oEndpoint + "/offset" + ($scope.slug_override == null ? $location.path() : $scope.slug_override);
+        $scope.slug_override = null;
+      }
       console.log(endpoint);
-      console.log($location.path().length);
-    }
-    //console.log(endpoint);
+    };
+
+    $scope.setEndpoint();
+
     $scope.loadPosts = function() {
       $scope.posts = [];
         $http.defaults.useXDomain = true;
@@ -36,6 +41,14 @@ angular.module('two1App.controllers', []).controller('PostsController', function
             $scope.posts.push(data);
         });
         
+    };
+
+    $scope.loadPost = function(slug){
+      $scope.posts = [];
+      $scope.slug_override = "/"+slug;
+      $scope.setEndpoint();
+      $scope.loadPosts();
+      cnt = 0;
     };
 
     $scope.updateShareThis = function(){
@@ -83,6 +96,7 @@ angular.module('two1App.controllers', []).controller('PostsController', function
       if(inview == false){return false;}
       cnt +=1;
       $http.defaults.useXDomain = true;
+      console.log(endpoint);
       var httpRequest = $http({
           method: 'GET',
           url: endpoint+"/"+cnt,
@@ -102,7 +116,8 @@ angular.module('two1App.controllers', []).controller('PostsController', function
     };
 
     $scope.slugClass = function(slug){
-      return {active: slug == $location.path().replace("/" , "")};
+      var cls = {'is-active': slug == $location.path().replace("/" , "")};
+      return cls;
     };
 
 });

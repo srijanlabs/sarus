@@ -8212,7 +8212,7 @@ th.hide-for-touch {
 }
 
 /* line 33, ../sass/screen.scss */
-.sidebar {
+.container .sidebar {
   height: 100%;
   overflow: auto;
   padding: 0;
