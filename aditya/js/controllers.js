@@ -14,11 +14,12 @@ var takeStartingAt = function (data, start) {
   }
   return result;
 };
-//var endpoint = "http://two3-rss.nodejitsu.com"
-var endpoint = "http://qz.local:3000"
-var oEndpoint = endpoint;
+
 /* Controllers */
 angular.module('two1App.controllers', []).controller('PostsController', function ($scope, $location, $http, $routeParams, $element, $timeout) {
+  var endpoint = $location.$$host == 'qz.local' ? "http://qz.local:3000" : "http://two3-rss.nodejitsu.com";
+  var oEndpoint = endpoint;
+
   $scope.slug_override = null;
     $scope.setEndpoint = function(){
       if($location.path().length > 1 || $scope.slug_override != null){
@@ -26,7 +27,6 @@ angular.module('two1App.controllers', []).controller('PostsController', function
         endpoint = oEndpoint + "/offset" + ($scope.slug_override == null ? $location.path() : $scope.slug_override);
         $scope.slug_override = null;
       }
-      console.log(endpoint);
     };
 
     $scope.setEndpoint();
@@ -96,7 +96,6 @@ angular.module('two1App.controllers', []).controller('PostsController', function
       if(inview == false){return false;}
       cnt +=1;
       $http.defaults.useXDomain = true;
-      console.log(endpoint);
       var httpRequest = $http({
           method: 'GET',
           url: endpoint+"/"+cnt,
