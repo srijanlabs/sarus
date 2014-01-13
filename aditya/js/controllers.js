@@ -25,8 +25,6 @@ angular.module('two1App.controllers', []).controller('PostsController', function
   var endpoint = $location.$$host == 'localhost' ? "http://localhost:3000" : "http://two3-rss.nodejitsu.com";
   var oEndpoint = endpoint; // We want to retain original end point as we need to modify the endpoint depending on different scenarios
 
-  $scope.sidebar_active_class='is-active' // modify this variable to set a class to the active post title in the sidebar.
-
   $scope.slug_override = null; // a global flag that can be set to allow setendpoint to re evaluate situation and modify end point accordingly
     $scope.setEndpoint = function(){
       if($location.path().length > 1 || $scope.slug_override != null){
@@ -129,9 +127,9 @@ angular.module('two1App.controllers', []).controller('PostsController', function
     };
 
     // This function is used from ui directive to assign active class to the currently visible post in the sidebar.
-    $scope.slugClass = function(slug){
 
-      var cls = {$scope.sidebar_active_class: slug == $location.path().replace("/" , "")};
+    $scope.slugClass = function(slug){
+      var cls = {'is-active': slug == $location.path().replace("/" , "")};
       return cls;
     };
 
