@@ -1,24 +1,35 @@
+//Dependencies
 var parser = require('rssparser');
 var http = require('http');
 var express = require('express');
-var feed_url = "http://staging.srijan7v2.srijan-sites.com/rss/";
+
+// Configure the feed url below
+var feed_url = "http://staging.srijan7v2.srijan-sites.com/blog/feed";
+// Setup authentication for rss feed if required or comment the line below
 var options = {'auth': {'user': "staging", 'pass': "srijan", 'sendImmediately': false}};
 
+// Configuration below allows cross domain requests or else the ajax requests to this service will fail
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
-
     next();
 }
 
+var app = express();
+// Global variable to hold rss feed content for caching purposes
+var feed = null;
+
+
+// Function below returns slug from a url. assuming that the last part of the url is a slug. 
+// Modify it to return slug correctly for differently structured urls
 var getSlug = function( str ) {
       return str.split( "/" ).filter(function( n ) {
         return n;
       }).reverse()[ 0 ];
     };
 
-
+// Function below returns a subset of an array containing hashes, filtering based on a property of the hashes
 var takeStartingAt = function (data, start) {
   var result = [];
   var skip = true;
@@ -35,16 +46,12 @@ var takeStartingAt = function (data, start) {
 
 };
 
-var app = express();
-
-var feed = null;
-
 function getfeed(callback){
   if(feed == null){
     parser.parseURL(feed_url, options, function(err, out){
-      callback(err, out);
       feed = out;
       console.log('fetched');
+      callback(err, out);
       return false;
     });
   }else{callback(false, feed); console.log('cached');}
