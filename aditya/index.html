@@ -14,26 +14,6 @@
   <script src="js/directives.js"></script>
   <script src="js/controllers.js"></script>
   <script src="/bower_components/angular-inview/angular-inview.js"></script>
-  <script>
-    app.directive('spy', function() {
-      return {
-        restrict: "A",
-        require: "^scrollSpy",
-        link: function(scope, elem, attrs, affix) {
-          return affix.addSpy({
-            id: attrs.spy,
-            "in": function() {
-              return elem.addClass('current');
-            },
-            out: function() {
-              return elem.removeClass('current');
-            }
-          });
-        }
-      };
-    });
-  </script>
-
   <!-- share this scripts below -->
   <script type="text/javascript">var switchTo5x=true;</script>
   <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -58,7 +38,7 @@
     <aside id="left" class="sidebar">
       <div ng-repeat="item in titles track by $index" class="article-list-item">
         <a href="/{{getSlug(item.url)}}" id="sidebar-{{getSlug(item.url)}}" ng-class="slugClass(getSlug(item.url))" class="sidebar-links" ng-click="loadPost(getSlug(item.url));">
-          {{item.title + info.currentSlug}}
+          {{item.title}}
         </a>
       </div>
     </aside>
