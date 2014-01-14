@@ -1,0 +1,62 @@
+// Standard Imports
+@import "normalize";
+
+// Zurb Foundation (http://foundation.zurb.com/)
+@import "foundation";
+
+// Layout
+@import "responsive";
+
+// Components
+@import "components/spinner";
+
+
+
+/*****************/
+/* Custom Styles */
+/*****************/
+
+.article {
+  margin: 4rem 0;
+  border-top: 1px solid lightgray;
+
+  &:first-child {
+    border-top: none;
+    margin-top: 1rem;
+  }
+}
+
+.loader {
+  @extend %spinner;
+}
+
+.container .sidebar {
+  height: 100%;
+  overflow: auto;
+  padding: 0;
+}
+
+.sidebar-links {
+  display: block;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid lightgray;
+  background-color: darken(white, 2%);
+
+  &:hover,
+  &:focus, {
+    background-color: white;
+  }
+
+  &:active,
+  &.is-active {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+.article-list-item:last-child {
+  .sidebar-links {
+    border-bottom: none;
+  }
+}
