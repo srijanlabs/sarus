@@ -83,19 +83,19 @@ angular.module('two1App.controllers', []).controller('PostsController', function
     var slugs = [];
     // This function allows to change the current url of the browser
     // This is required to show correct representation to the user based on the post he is viewing right now
-    $scope.changeUrl = function(slug, index, inview, inviewpart){
-      //console.log("s: "+ slug +" v:"+inview+ " p:"+inviewpart); // Uncomment this to debug the visibility of posts
+    $scope.changeUrl = function(title, slug, index, inview, inviewpart){
+      //console.log("t: "+ title + " s: "+ slug +" v:"+inview+ " p:"+inviewpart); // Uncomment this to debug the visibility of posts
       if(document.body.scrollTop == 0){return false;}
-      slugs[index] = slug; // we maintain an array of slugs viewed, so that when the user scrolls back up we change the url to the previous post.
+      slugs[index] = {title: title, slug: slug}; // we maintain an array of slugs viewed, so that when the user scrolls back up we change the url to the previous post.
       if(inview == true){ // the inview module detects both when an element comes in views or goes out of views hence we only need to trigger the change when the element comes in view 
         $location.path("/"+slug);
+        $scope.gaUpdate(title, slug);
       }
       
-      var pslug = slugs[index-1];
-      if(inview == false && angular.isUndefined(pslug) == false){ // Assuming that inview false means that the current slug is going out of the view by scrolling up
-        $location.path("/"+pslug); // we change the browser url to the previous post slug
+      var prev = slugs[index-1];
+      if(inview == false && angular.isUndefined(prev) == false){ // Assuming that inview false means that the current slug is going out of the view by scrolling up
+        $location.path("/"+prev.slug); // we change the browser url to the previous post slug
       }
-
     };
 
     var cnt = 0;
@@ -131,6 +131,14 @@ angular.module('two1App.controllers', []).controller('PostsController', function
     $scope.slugClass = function(slug){
       var cls = {'is-active': slug == $location.path().replace("/" , "")};
       return cls;
+    };
+
+    $scope.gaUpdate = function(title, slug){
+      ga(
+          'send', 'pageview', {
+          'page': slug,
+          'title': title
+      });
     };
 
 });
