@@ -1,6 +1,5 @@
 <div ng-controller="PostsController">
     <main id="right" class="article-stream">
-      <!-- <p>    Click <a ng-click="loadPosts()">here</a> to load data.</p> -->
       <article ng-repeat="post in posts track by $index" repeat-done="updateShareThis();" class="article">
         <h1 class="title article__title">
           <a href="/{{getSlug(post.url)}}" in-view="changeUrl('{{post.title}}', '{{getSlug(post.url)}}', $index, $inview, $inviewpart)" in-view-offset="0">{{post.title}}</a>
