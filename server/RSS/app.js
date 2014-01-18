@@ -122,14 +122,14 @@ app.get('/:count', function(req, res, next) {
 
 app.get('/offset/:slug/:count', function(req, res, next) {
     getFeed(function(err, out) {
-      // Check for data.
-      validateData(err, out);
-      var count = req.params.count;
-      var slug = req.params.slug;
-      var offsetItems = takeStartingAt(out.items, slug);
-      var article = count != "all" ? offsetItems[count] : offsetItems;
-      res.writeHead(200, {'Content-Type': 'application/json'});
-      res.end(JSON.stringify(article, null, 2));
+    // Check for data.
+    validateData(err, out);
+    var count = req.params.count;
+    var slug = req.params.slug;
+    var offsetItems = takeStartingAt(out.items, slug);
+    var article = count != "all" ? offsetItems[count] : offsetItems;
+    res.writeHead(200, {'Content-Type': 'application/json'});
+    res.end(JSON.stringify(article, null, 2));
     });
 });
 

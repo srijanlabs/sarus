@@ -2,7 +2,7 @@
 
 /* Directives */
 
-angular.module('two1App.directives', []).
+angular.module('sarusApp.directives', []).
   directive('appVersion', function (version) {
     return function(scope, elm, attrs) {
       elm.text(version);

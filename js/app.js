@@ -1,9 +1,9 @@
-var app = angular.module('two1App', [
+var app = angular.module('sarusApp', [
   // Dependencies
   'ngRoute',
   'angular-inview',
-  'two1App.controllers',
-  'two1App.directives',
+  'sarusApp.controllers',
+  'sarusApp.directives',
   'ngSanitize',
   'ngLoadScript'
 

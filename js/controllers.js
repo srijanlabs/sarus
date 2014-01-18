@@ -20,7 +20,7 @@ var takeStartingAt = function (data, start) {
 };
 
 /* Posts Controller */
-angular.module('two1App.controllers', []).controller('PostsController', function ($scope, $location, $http, $routeParams, $element, $timeout) {
+angular.module('sarusApp.controllers', []).controller('PostsController', function ($scope, $location, $http, $routeParams, $element, $timeout) {
   // Different api end points are being used considering if a local request is being made or on a hosted instance.
   var endpoint = $location.$$host == 'localhost' ? "http://localhost:3000" : "http://two3-rss.nodejitsu.com";
   var oEndpoint = endpoint; // We want to retain original end point as we need to modify the endpoint depending on different scenarios
