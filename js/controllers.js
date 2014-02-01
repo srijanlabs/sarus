@@ -6,7 +6,7 @@ angular.module('sarusApp.controllers', [])
   .controller('PostsController', function ($scope, $location, $http, $routeParams, $element, $timeout) {
 
   // Set the server endpoint. e.g. http://localhost:3000 or http://yourapp.nodejitsu.com
-  var endpoint = $location.$$host == "http://localhost:3000";
+  var endpoint = $location.$$host = "http://localhost:3000";
 
   // We want to retain original end point as we need to modify 
   // the endpoint depending on different scenarios.
