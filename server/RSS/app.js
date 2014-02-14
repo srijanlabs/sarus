@@ -19,9 +19,10 @@ var app = express();
 // Set up port for the server.
 app.set('port', process.env.PORT || 3000);
 // Configure the feed url below.
-var feed_url = "http://staging.srijan7v2.srijan-sites.com/blog/feed";
+var feed_url = "http://www.srijan.net/blog/feed";
 // Setup authentication for rss feed if required or comment the line below.
-var options = {'auth': {'user': "staging", 'pass': "srijan", 'sendImmediately': false}};
+// var options = {'auth': {'user': "staging", 'pass': "srijan", 'sendImmediately': false}};
+   var options = {};
 // Configuration below allows cross domain requests or else
 // the ajax requests to this service will fail.
 var allowCrossDomain = function(req, res, next) {
@@ -74,7 +75,7 @@ var takeStartingAt =  function (data, start) {
 // Get feed from cache if available, else fetch from source.
 var getFeed = function (callback) {
                 if (feed == null) {
-                  parser.parseURL(feed_url, options, function(err, out) {
+                  parser.parseURL(feed_url, options, function(err, out) {console.log(out);
                     feed = out;
                     callback(err, out);
                     console.log('The request was fetched');
