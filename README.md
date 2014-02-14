@@ -1,9 +1,8 @@
-This is first project of TWO(Two Weeks On) initiative.
+Sarus is a framework built on HTML5, AngularJS and (optionally) nodeJS in the backend.
+It provides unlimited scroll for your content while maintaining urls references in the browser, hence making sure there is no compromise on SEO.
 
-This project is intended for demo purposes, building an implementation on the lines of qz.com.
+This project is under active development, though documentation is lacking miserably. However, code has been well commented in the master branch and should not cause pain to the developers.
+For the rest, it will be done before this month end.
 
-Initial technologies planned:
 
-  - Angular
-  - Express
-  - MongoDB
+Please follow us on [Twitter](https://twitter.com/projectsarus)
