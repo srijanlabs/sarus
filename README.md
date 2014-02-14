@@ -6,3 +6,11 @@ For the rest, it will be done before this month end.
 
 
 Please follow us on [Twitter](https://twitter.com/projectsarus)
+
+
+Developed by [Aditya](https://twitter.com/adityaraj),
+[Arijit](https://twitter.com/fotuzlab) and 
+[Ravish](https://twitter.com/ray1claw)
+
+
+Sponsored by [Srijan Technologies](http://srijan.net)
