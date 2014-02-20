@@ -45,14 +45,14 @@ _These urls are defined in the RSS server script in the bundle. See below._
 
 Data is fed into Sarus through API or RSS.
 
-## Using Feeds
+### Using Feeds
 A NodeJS script to convert RSS feeds into required format comes in the bundle.
 
 1. Replace line 22 with feed url at server/RSS/app.js.
 
 2. Modify the endpoint to Node server's path on line 9 at js/controllers.js e.g. http://localhost:3000
 
-## Using API
+### Using API
 Sarus can be used with custom API. This API should return content in JSON with minimum of following keys:
 
 > title
