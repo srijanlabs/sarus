@@ -70,9 +70,9 @@ Sarus can be used with custom API. This API should return content in JSON with m
 ### Follow us on [Twitter](https://twitter.com/projectsarus) for updates
 
 
-### Developed by
+***
 
+Developed by
 [Aditya](https://twitter.com/adityaraj),
 [Arijit](https://twitter.com/fotuzlab) and 
 [Ravish](https://twitter.com/ray1claw)
-
