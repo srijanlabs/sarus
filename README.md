@@ -64,10 +64,15 @@ Sarus can be used with custom API. This API should return content in JSON with m
 1. Modify the endpoint to the address of API calls on line 9 at js/controllers.js e.g. http://example.com. Do not add trailing slash.
 
 
-Follow us on [Twitter](https://twitter.com/projectsarus) for updates
+# [DEMO](http://sarus.srijanlabs.com)
 
 
-Developed by [Aditya](https://twitter.com/adityaraj),
+### Follow us on [Twitter](https://twitter.com/projectsarus) for updates
+
+
+### Developed by
+
+[Aditya](https://twitter.com/adityaraj),
 [Arijit](https://twitter.com/fotuzlab) and 
 [Ravish](https://twitter.com/ray1claw)
 
