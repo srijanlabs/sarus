@@ -1,28 +1,31 @@
-# About
+# Sarus
 
-Sarus is a frontend framework based on AngularJS to display any number of posts without using a pager. It implements an infinite scroll but maintains url of the post in the browser's address bar. A continous mapping of urls allows search engines to count page hits accurately and also allow users to easily share posts.
+### Check out the [Live Demo](http://sarus.srijanlabs.com)
 
-# Features
+Sarus is a minimalistic front-end framework for when you need a SEO-friendly continuous scroll across a lot of content. Sarus implements a UX similar to [Quartz](http://qz.com/), and allows for bringing in new content seamlessly on scroll instead of tap/click. Couple that with context-based URL switching, and you got yourself a SEO winner! Sarus is perfect for your blog and any scenario where a continuous flow of content is needed.
 
-## Fast
-It loads data along scrolling. Hence speed to load nth post is equal to loading first post.
-## Purely frontend
-It is completely independent of the way data is stored in the backend. It uses API or RSS feeds to fetch the posts providing complete abstraction between frontend and backend. This also makes it compatible to use with apps that use mobile/CMS/propreitary solutions to store data.
-## Easy to set up
-It comes with enough inline documentation for anyone to start using. HTML partials are easy to maintain and indentify.
-## SEO friendly infinite scroll
-Along infinite scroll, it maintains url paths of posts in browser's address bar. This allows search engines to index your content regularly.
-## Infinitely customizable
-Being based on AngularJS, it allows any level of customization in design and functionality. It is as easy to customize as it is to set up.
-## Responsive
-The framework uses Zurb Foundation. It is responsive OOB.
-## Maintains browser history
+Made with love by [@adityaraj](https://twitter.com/adityaraj), [@fotuzlab](https://twitter.com/fotuzlab) and [@ray1claw](https://twitter.com/ray1claw)
+
+## Features
+
+### Fast
+Sarus loads data incrementally as you scroll, hence speed to load any post is equal to loading the first post.
+### Purely front-end
+Sarus is completely independent of the way data is stored in the back-end. It uses an API or RSS feeds to fetch the posts providing complete abstraction between front-end and back-end. This also makes it compatible with apps that use mobile-native/content management/proprietary solutions to store data.
+### Easy to set up
+Sarus comes with extensive inline documentation to help you integrate it into your system with ease. HTML partials are easy to identify and maintain.
+### SEO friendly infinite scroll
+Along infinite scroll, Sarus maintains URL paths of posts for the browser. This allows search engines to index your content without hiccups.
+### Infinitely customizable
+Being based on AngularJS, Sarus allows any level of customization in design and functionality. It is as easy to customize as it is to set up.
+### Responsive
+Sarus uses the Sass version of Zurb Foundation, and comes responsive out of the box. You can easily either extend it or replace the whole styling component to make it look and feel like you want.
+### Maintains browser history
 It maintains users' browser history using HTML5 History API. Bookmark and find your visited articles with ease. 
-## Sharethis
+### Sharethis
 Sharethis comes bundled with it to allow easy sharing across social media.
 
-# Requirements
-
+## Requirements
 Minimum requirement is following tags in feed XML:
 
 `<title></title>`
@@ -42,17 +45,16 @@ For an API call, following urls are required:
 _These urls are defined in the RSS server script in the bundle. See below._
 
 ## Installation
+Sarus uses the data that you expose it via an API or RSS feed.
 
-Data is fed into Sarus through API or RSS.
-
-### Using Feeds
+#### Using Feeds
 A NodeJS script to convert RSS feeds into required format comes in the bundle.
 
 1. Replace line 22 with feed url at server/RSS/app.js.
 
 2. Modify the endpoint to Node server's path on line 9 at js/controllers.js e.g. http://localhost:3000
 
-### Using API
+#### Using API
 Sarus can be used with custom API. This API should return content in JSON with minimum of following keys:
 
 > title
@@ -63,16 +65,9 @@ Sarus can be used with custom API. This API should return content in JSON with m
 
 1. Modify the endpoint to the address of API calls on line 9 at js/controllers.js e.g. http://example.com. Do not add trailing slash.
 
-
-# [DEMO](http://sarus.srijanlabs.com)
-
-
 ### Follow us on [Twitter](https://twitter.com/projectsarus) for updates
 
-
-***
-
 Developed by
-[Aditya](https://twitter.com/adityaraj),
-[Arijit](https://twitter.com/fotuzlab) and 
-[Ravish](https://twitter.com/ray1claw)
+[@adityaraj](https://twitter.com/adityaraj)
+[@fotuzlab](https://twitter.com/fotuzlab)
+[@ray1claw](https://twitter.com/ray1claw)
