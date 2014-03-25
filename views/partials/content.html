@@ -1,8 +1,8 @@
 <div ng-controller="PostsController">
   <main id="right" class="article-stream">
-    <article ng-repeat="post in posts track by $index" repeat-done="updateShareThis();" class="article">
+    <article ng-repeat="post in posts track by $index" repeat-done="updateShareThis();" class="article" ng-init="title = post.title">
       <h1 class="title article__title">
-        <a href="/{{getSlug(post.url)}}" in-view="changeUrl('{{post.title}}', '{{getSlug(post.url)}}', $index, $inview, $inviewpart)" in-view-offset="0">{{post.title}}</a>
+        <a href="/{{getSlug(post.url)}}" in-view="changeUrl(title, '{{getSlug(post.url)}}', $index, $inview, $inviewpart)" in-view-offset="0">{{post.title}}</a>
       </h1>
       <div class="post article__body">
         <div ng-bind-html="post.summary"></div>
