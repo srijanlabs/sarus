@@ -155,6 +155,8 @@ app.get('/slugs/:offset/:count', function(req, res, next) {
 /**
  * Start Server
  */
-http.createServer(app).listen(app.get('port'), function () {
-  console.log('Sarus RSS server listening on port ' + app.get('port'));
+
+var port = Number(process.env.PORT || 5000);
+app.listen(port, function() {
+  console.log("Listening on " + port);
 });
