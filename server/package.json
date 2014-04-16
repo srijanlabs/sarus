@@ -17,7 +17,7 @@
     "rssparser": "0.0.4",
     "express": "~3.4.7"
   },
-  "subdomain": "two3-rss",
+  "subdomain": "suras",
   "engines": {
     "node": "0.10.x"
   }
