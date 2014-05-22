@@ -3,6 +3,7 @@
     <base href="/" />
     <link href="/styles/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link href="/styles/css/print.css" media="print" rel="stylesheet" type="text/css" />
+    <link href="/styles/css/style.css" media="screen" rel="stylesheet" type="text/css" />
     <!--[if IE]>
       <link href="/styles/css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
       <![endif]-->
@@ -14,8 +15,10 @@
     <script src="js/directives.js"></script>
     <script src="js/controllers.js"></script>
     <script src="/bower_components/angular-inview/angular-inview.js"></script>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600">
   </head>
   <body>
+    <ng-include src="'views/partials/header.html'"></ng-include>
     <div id="content" class="container">
       <ng-include src="'views/partials/content.html'"></ng-include>
     </div>

@@ -1,0 +1,103 @@
+*, :before, :after {
+    -moz-box-sizing: border-box;
+    -web-box-sizing: border-box;
+    box-sizing:border-box;
+}
+
+body {
+	font-size: 20px;
+    font-family: Source Sans Pro,Scada;
+    margin: 0;
+    background: #f6f3f6 url("../images/sarus_body_bg.png") 0 0  repeat;
+}
+a {
+	text-decoration: none;
+}
+html, button, input, select, textarea {
+    color: #222222;
+    font-family: Source Sans Pro,Scada;
+}
+
+.header {
+    background-color: #000;
+    height: 77px;
+    padding: 15px 36px 10px;
+    border-bottom: 3px solid rgba(196, 194, 196, .9);
+    box-shadow: 0 5px 5px rgba(223, 222, 224, 1);
+    margin-bottom: 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+.logo {
+    float: left;
+}
+.searchbar {
+    float: right;
+
+}
+.searchbar input {
+    border-radius: 5px;
+    border: 0 none;
+    height: 34px;
+    text-transform: uppercase;
+    width: 248px;
+    padding-left: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #666666;
+    background: #c9c9c9 url("../images/sarus_search-icon.png") 95% 7px no-repeat;
+}
+
+
+#content.container {
+    margin: 80px auto 0;
+    width: 96%;
+    font-family: Source Sans Pro,Scada;
+    box-shadow: -4px 2px 2px rgba(223, 222, 224, 0.5);
+    border-radius: 10px;
+    background: #fff;
+}
+
+#content.container #right.article-stream {
+    background: #ffffff;
+    border-radius: 0 10px 10px 0;
+}
+
+#content.container h1.title.article__title {
+    font-size: 27px;
+    font-family: Source Sans Pro,Scada;
+    font-weight: bold;
+    color: #66cccc;
+    line-height: 30px;
+}
+#content.container h1.title.article__title a {
+    color: #66cccc;
+}
+
+
+#content.container .sidebar {
+    background: #ffffff;
+    border-radius: 10px 0 0 10px;
+    height: 87.5%;
+}
+
+#content.container .sidebar .article-list-item {
+    font-size: 17px;
+    font-family: Source Sans Pro,Scada;
+    font-weight: bold;
+    color: #666666;
+    line-height: 20px;
+}
+#content.container .sidebar .article-list-item:first-child a{
+    border-radius: 10px 0 0;
+}
+#content.container .sidebar .article-list-item a {
+    color: #666666;
+}
+#content.container .sidebar .article-list-item a.is-active {
+    color: #66cccc;
+    background-color:#ffffff;
+}
