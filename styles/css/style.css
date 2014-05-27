@@ -75,6 +75,9 @@ html, button, input, select, textarea {
 }
 #content.container h1.title.article__title a {
     color: #66cccc;
+    font-size: 1.750em;
+    line-height: 1;
+    font-family: Source Sans Pro,Scada;
 }
 
 
@@ -85,11 +88,12 @@ html, button, input, select, textarea {
 }
 
 #content.container .sidebar .article-list-item {
-    font-size: 17px;
     font-family: Source Sans Pro,Scada;
     font-weight: bold;
+    padding: 0 1rem 0 0;
     color: #666666;
-    line-height: 20px;
+    font-size: 1.125em;
+    line-height: 1.2em;
 }
 #content.container .sidebar .article-list-item:first-child a{
     border-radius: 10px 0 0;
@@ -100,4 +104,15 @@ html, button, input, select, textarea {
 #content.container .sidebar .article-list-item a.is-active {
     color: #66cccc;
     background-color:#ffffff;
+}
+
+.container .article-stream {
+    padding-left: 1.5em !important;
+    padding-right: 1em !important;
+}
+
+.article__body .field-name-body p {
+  margin-bottom: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
 }

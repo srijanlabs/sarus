@@ -39,9 +39,9 @@
 .sidebar-links {
   display: block;
   width: 100%;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid lightgray;
-  background-color: darken(white, 2%);
+  padding: 1em 0 1em 1em;
+  border-bottom: 1px solid #e0e0e0;
+  // background-color: darken(white, 2%);
 
   &:hover,
   &:focus, {
