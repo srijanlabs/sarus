@@ -113,11 +113,14 @@ html, button, input, select, textarea {
 }
 
 .article__body .field-name-body p,
-.article__body .field-name-body p strong {
+.article__body .field-name-body p strong,
+.article__body .field-name-body div,
+.article__body .field-name-body strong {
   margin-bottom: 0;
   font-size: 1.125rem;
   font-weight: normal;
   color: #666;
+  line-height: 1.3;
 }
 
 .article__body .field-name-body {
