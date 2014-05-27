@@ -8201,7 +8201,7 @@ th.hide-for-touch {
 /* line 24, ../sass/screen.scss */
 .article:first-child {
   border-top: none;
-  margin-top: 1rem;
+  margin-top: 0;
 }
 
 /* line 34, ../sass/screen.scss */
