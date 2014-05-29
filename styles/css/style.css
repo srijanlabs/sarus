@@ -5,13 +5,13 @@
 }
 
 body {
-	font-size: 20px;
+    font-size: 20px;
     font-family: Source Sans Pro,Scada;
     margin: 0;
     background: #f6f3f6 url("../images/sarus_body_bg.png") 0 0  repeat;
 }
 a {
-	text-decoration: none;
+    text-decoration: none;
 }
 html, button, input, select, textarea {
     color: #222222;
@@ -125,4 +125,10 @@ html, button, input, select, textarea {
 
 .article__body .field-name-body {
     margin-bottom: 1.3rem;
+}
+
+.article__body .field-name-field-highlight h2 {
+  font-weight: 600;
+  color: #666;
+  font-size: 1em;
 }
