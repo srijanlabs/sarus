@@ -1,0 +1,19 @@
+<div ng-controller="PostsController">
+  <main id="right" class="article-stream">
+    <article ng-repeat="post in posts track by $index" repeat-done="updateShareThis();" class="article" ng-init="title = post.title">
+      <h1 class="title article__title">
+        <a href="/{{getSlug(post.url)}}" in-view="changeUrl(title, '{{getSlug(post.url)}}', $index, $inview, $inviewpart)" in-view-offset="0">{{post.title}}</a>
+      </h1>
+      <div class="post article__body">
+        <div ng-bind-html="post.summary"></div>
+        <!-- Add ShareThis -->
+        <div ng-include="'views/others/_sharethis.html'"></div>
+      </div>
+    </article>
+    <!-- Load next article as soon as user is 600 px above this div -->
+    <div in-view="loadNext($inview);" in-view-offset="600" id="loading" class="loader"></div>
+  </main>
+  
+  <!-- Include sidebar -->
+  <ng-include src="'views/partials/sidebar.html'"></ng-include>
+</div>
