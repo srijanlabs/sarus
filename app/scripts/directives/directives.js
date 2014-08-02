@@ -21,15 +21,14 @@ angular.module('sarusApp.directives', [])
             restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
             link: function($scope, iElm, iAttrs, controller) {
                 var raw = iElm[0];
-                var offset= parseInt($scope.scrollOffSet);
+                var offset = parseInt($scope.scrollOffSet);
                 iElm.bind('scroll', function() {
-                    if (raw.scrollTop + raw.offsetHeight+300 >= raw.scrollHeight  ) {
+                    if (raw.scrollTop + raw.offsetHeight + 300 >= raw.scrollHeight) {
                         $scope.$apply($scope.whenScrolled);
 
                     }
 
                 });
-                console.log(raw.scrollHeight + "   " + raw.scrollTop);
             }
         };
     });

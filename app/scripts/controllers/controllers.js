@@ -6,7 +6,7 @@ angular.module('sarusApp.controllers', [])
     .controller('PostsController', function($scope, $location, $http, $routeParams, $element, $timeout) {
 
         // Set the server endpoint. e.g. http://localhost:3000 or http://yourapp.nodejitsu.com
-        var endpoint = $location.$$host = "http://localhost:5000";
+        var endpoint = $location.$$host = "http://localhost:3000";
 
         // We want to retain original end point as we need to modify
         // the endpoint depending on different scenarios.
@@ -20,7 +20,7 @@ angular.module('sarusApp.controllers', [])
             if ($location.path().length > 1 || $scope.slug_override != null) {
                 // If a slug is passed then we change the endpoint to include
                 // slug so that response is sent accordingly.
-                endpoint = oEndpoint + "/offset" + ($scope.slug_override == null ?
+                endpoint = oEndpoint + "/api/offset" + ($scope.slug_override == null ?
                     $location.path() : $scope.slug_override);
                 $scope.slug_override = null;
             }
@@ -76,7 +76,7 @@ angular.module('sarusApp.controllers', [])
             $http.defaults.useXDomain = true;
             var httpRequest = $http({
                 method: 'GET',
-                url: oEndpoint + "/slugs/0/10"
+                url: oEndpoint + "/api/slugs/0/10"
             }).success(function(data, status) {
                 $scope.titles = data;
             });
@@ -125,7 +125,7 @@ angular.module('sarusApp.controllers', [])
             $http.defaults.useXDomain = true;
             var httpRequest = $http({
                 method: 'GET',
-                url: oEndpoint + "/slugs/" + offset + "/5"
+                url: oEndpoint + "/api/slugs/" + offset + "/5"
             }).success(function(data, status) {
                 var titles = data;
                 for (var i = 0; i < titles.length; i++) {
