@@ -1,8 +1,8 @@
 <!-- Sidebar -->
 <aside id="left" class="sidebar" when-scrolled="loadMoreSlugs()" scroll-off-set="300">
-  <div ng-repeat="item in titles track by $index" class="article-list-item">
-    <a href="/{{getSlug(item.url)}}" id="sidebar-{{getSlug(item.url)}}" ng-class="slugClass(getSlug(item.url))" class="sidebar-links" ng-click="loadPost(getSlug(item.url));">
+    <div ng-repeat="item in feed.articles track by $index" class="article-list-item">
+        <a href="/{{getSlug(item.url)}}" id="sidebar-{{getSlug(item.url)}}" ng-class="slugClass(getSlug(item.url))" class="sidebar-links" ng-click="loadPost(getSlug(item.url));">
       {{item.title}}
     </a>
-  </div>
+    </div>
 </aside>
