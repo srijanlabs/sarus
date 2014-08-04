@@ -3,8 +3,10 @@
 /* Controllers */
 
 angular.module('sarusApp.filters', [])
-    .filters('filterFeeds', function() {
+    .filter('filterFeeds', function() {
         return function(arr) {
-            return arr;
+            return arr.filter(function(el) {
+                return el.available == true;
+            });
         };
     });

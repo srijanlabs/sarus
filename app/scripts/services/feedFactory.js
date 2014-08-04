@@ -7,7 +7,7 @@ angular.module('sarusApp.factories', [])
         function Feed() {
             //to store ALL feed objects
             this.articles = [];
-
+            this.full_articles = [];
             this.busy = false;
             //to sync between server api calls
             this.url = "http://localhost:3000/api/";
@@ -16,16 +16,14 @@ angular.module('sarusApp.factories', [])
 
         Feed.prototype = {
 
-            initial_loading: function() {
+            initial_loading: function(offset, count, arr_Articles) {
                 var scope = this;
                 if (scope.busy) return;
                 scope.busy = true;
-                //Get first 10 slugs + 1 Article
-
                 $http.defaults.useXDomain = true;
                 $http({
                     method: 'GET',
-                    url: scope.url + "slugs/0/10"
+                    url: scope.url + "slugs/" + offset + "/" + count
                 }).success(function(data, status) {
                     for (var i = 0; i < data.length; i++) {
                         var current = data[i];
@@ -33,9 +31,12 @@ angular.module('sarusApp.factories', [])
                         scope.articles.push(current);
                     }
                     scope.busy = false;
-                    scope.render_Article(scope.articles[0].index);
-                    console.log(scope.articles[0].index);
+
+                    arr_Articles.forEach(function(el) {
+                        scope.render_Article(scope.articles[el].index);
+                    });
                 });
+
 
                 // TODO :: Adding on error also;
                 scope.busy = false;
@@ -76,8 +77,8 @@ angular.module('sarusApp.factories', [])
                     method: 'GET',
                     url: scope.url + "article/" + index
                 }).success(function(data, status) {
-                    data.available = true;
-                    scope.articles[index] = data;
+                    scope.articles[index].available = true;
+                    scope.full_articles[index] = data;
                     scope.busy = false;
                 });
 

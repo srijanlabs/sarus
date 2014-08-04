@@ -7,10 +7,12 @@ var app = angular.module('sarusApp', [
         'ngRoute',
         'sarusApp.controllers',
         'sarusApp.directives',
+        'angular-inview',
         'ngSanitize',
         'ngLoadScript',
         'sarusApp.factories',
         'sarusApp.filters'
+
 
     ]).
     // Route configuration below.
