@@ -1,10 +1,10 @@
 # Sarus_v2
-
+Developer : [Ajay Singh](http://about.me/meajaysingh)
 ### Check out the [Live Demo](http://)
 
 Sarus is a minimalistic front-end framework for when you need a SEO-friendly continuous scroll across a lot of content. Sarus implements a UX similar to [Quartz](http://qz.com/), and allows for bringing in new content seamlessly on scroll instead of tap/click. Couple that with context-based URL switching, and you got yourself a SEO winner! Sarus is perfect for your blog and any scenario where a continuous flow of content is needed.
 
-Made with love by [@adityaraj](https://twitter.com/adityaraj), [@fotuzlab](https://twitter.com/fotuzlab) and [@ray1claw](https://twitter.com/ray1claw) [@ajaysingh](http://about.me/meajaysingh)
+Made with love by [@adityaraj](https://twitter.com/adityaraj),[@ajsingh92](https://twitter.com/ajsingh92), [@fotuzlab](https://twitter.com/fotuzlab) and [@ray1claw](https://twitter.com/ray1claw)
 
 ## Features
 
@@ -55,7 +55,7 @@ Sarus can be used with custom API. This API should return content in JSON with m
 > description
 
 Developed by
+[@ajsingh92](https://twitter.com/ajsingh92)
 [@adityaraj](https://twitter.com/adityaraj)
 [@fotuzlab](https://twitter.com/fotuzlab)
 [@ray1claw](https://twitter.com/ray1claw)
-[@ajaysingh](http://about.me/meajaysingh)
