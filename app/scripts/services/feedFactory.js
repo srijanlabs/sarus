@@ -36,7 +36,7 @@ angular.module('sarusApp.factories', [])
                 $http.defaults.useXDomain = true;
                 $http({
                     method: 'GET',
-                    url: scope.url + "slugs/" + offset + "/5"
+                    url: scope.url + "slugs/" + offset + "/10"
                 }).success(function(data, status) {
                     for (var i = 0; i < data.length; i++) {
                         var current = data[i];
