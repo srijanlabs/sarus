@@ -24,7 +24,7 @@ angular.module('sarusApp.directives', [])
                 var offset = parseInt($scope.scrollOffSet);
                 iElm.bind('scroll', function() {
                     if (raw.scrollTop + raw.offsetHeight + offset >= raw.scrollHeight) {
-                        $scope.$apply($scope.whenScrolled);
+                        $scope.$eval($scope.whenScrolled);
 
                     }
 
