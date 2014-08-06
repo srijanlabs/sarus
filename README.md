@@ -44,8 +44,9 @@ _These urls are defined in the RSS server script in the bundle. See below._
 
 ## Installation
 Sarus uses the data that you expose it via an API or RSS feed.
+>cd lib
 >npm install
->node lib/bin/www
+>node bin/www
 
 > open url localhost:3000
 
