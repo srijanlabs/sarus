@@ -10,8 +10,7 @@ var app = angular.module('sarusApp', [
         'sarusApp.directives',
         'ngSanitize',
         'ngLoadScript',
-        'sarusApp.factories',
-        'sarusApp.filters'
+        'sarusApp.factories'
 
 
     ]).
