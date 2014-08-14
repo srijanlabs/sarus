@@ -1,4 +1,4 @@
-<div ng-controller="PostsController">
+<div ng-controller="PostsController as postController">
     <main id="right" class="article-stream">
         <article ng-repeat="post in feed.full_articles track by $index" repeat-done="updateShareThis();" class="article" ng-init="title = post.title">
             <h1 class="title article__title">
