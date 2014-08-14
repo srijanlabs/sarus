@@ -1,9 +1,13 @@
 'use strict';
+(function() {
 
-/* Controllers */
+    /* Controllers */
+    angular.module('sarusApp.controllers', [])
+        .controller('PostsController', PostsController);
 
-angular.module('sarusApp.controllers', [])
-    .controller('PostsController', function($scope, $location, $anchorScroll, $http, $routeParams, $timeout, Feed) {
+
+
+    function PostsController($scope, $location, $anchorScroll, $http, $routeParams, $timeout, Feed) {
         $scope.feed = new Feed();
         $scope.feed.initial_loading(0, 10, [0]);
         $scope.loadMoreSlugs = function() {
@@ -118,23 +122,26 @@ angular.module('sarusApp.controllers', [])
                 });
         };
 
-    });
+    };
 
-// The function below allows to filter an array of hashes
-// like calling:  takeStartingAt([{slug: 'a'}, {slug: 'b'}, {slug: 'c'}, {slug: 'd'}], 'b')
-// would return [{slug: 'b'}, {slug: 'c'}, {slug: 'd'}]
-// More info at: http://goo.gl/8dREOz
-var takeStartingAt = function(data, start) {
-    var result = [];
-    var skip = true;
-    for (var i = 0; i < data.length; i++) {
-        if (data[i].slug === start) {
-            skip = false;
+    // The function below allows to filter an array of hashes
+    // like calling:  takeStartingAt([{slug: 'a'}, {slug: 'b'}, {slug: 'c'}, {slug: 'd'}], 'b')
+    // would return [{slug: 'b'}, {slug: 'c'}, {slug: 'd'}]
+    // More info at: http://goo.gl/8dREOz
+    var takeStartingAt = function(data, start) {
+        var result = [];
+        var skip = true;
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].slug === start) {
+                skip = false;
+            }
+            if (skip) {
+                continue;
+            }
+            result.push(data[i]);
         }
-        if (skip) {
-            continue;
-        }
-        result.push(data[i]);
-    }
-    return result;
-};
+        return result;
+    };
+
+
+}());
