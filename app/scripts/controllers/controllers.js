@@ -6,31 +6,48 @@
         .controller('PostsController', PostsController);
 
 
+    PostsController.$inject = ['$location', '$anchorScroll', '$http', '$routeParams', '$timeout', 'Feed'];
 
-    function PostsController($scope, $location, $anchorScroll, $http, $routeParams, $timeout, Feed) {
-        $scope.feed = new Feed();
-        $scope.feed.initial_loading(0, 10, [0]);
-        $scope.loadMoreSlugs = function() {
-            $scope.feed.load_more_feed(function(done) {
+    function PostsController($location, $anchorScroll, $http, $routeParams, $timeout, Feed) {
+        var vm = this;
+        vm.feed = new Feed();
+        vm.feed.initial_loading(0, 10, [0,1]);// constructor 0-10 slugs + first feed
+
+        vm.loadMoreSlugs = loadMoreSlugs;
+        vm.navPost = navPost;
+        vm.loadNextArticle = loadNextArticle;
+        vm.changeUrl = changeUrl;
+        vm.getSlug = getSlug;
+        vm.slugClass = slugClass;
+        vm.updateShareThis = updateShareThis;
+        vm.gaUpdate = gaUpdate;
+
+
+
+        //////////////////////////
+        function loadMoreSlugs() {
+            vm.feed.load_more_feed(function(done) {
 
             });
         };
         // navigation from sidebar
-        $scope.navPost = function(index) {
-            $scope.feed.full_articles = [];
-            $scope.feed.render_Article(index);
+        function navPost(index) {
+            vm.feed.full_articles = [];
+            vm.feed.render_Article(index);
+            vm.feed.render_Article(index+1);
         };
-        $scope.loadNext = function(inview) {
+
+        function loadNextArticle(inview) {
             // The event captures via angular inview module must be of a condition where
             // the loading element has come into display and not while going out of view.
             if (inview == false) {
                 return false;
             }
-            var len = $scope.feed.full_articles.length;
-            if ($scope.feed.full_articles[len - 1]) {
-                var index = $scope.feed.full_articles[len - 1].index;
+            var len = vm.feed.full_articles.length;
+            if (vm.feed.full_articles[len - 1]) {
+                var index = vm.feed.full_articles[len - 1].index;
                 var next_index = index + 1;
-                $scope.feed.render_Article(next_index);
+                vm.feed.render_Article(next_index);
 
             } else
                 console.log("no found!");
@@ -40,7 +57,7 @@
         var slugs = [];
         // This function allows to change current url of the browser.
         // This is required to show correct url to the user based on the post in view.
-        $scope.changeUrl = function(title, slug, index, inview, inviewpart) {
+        function changeUrl(title, slug, index, inview, inviewpart) {
             if (document.body.scrollTop == 0) {
                 return false;
             }
@@ -51,7 +68,7 @@
             if (inview == true) {
                 $location.path("/" + slug);
                 // Let Google know of change in post.
-                $scope.gaUpdate(title, slug);
+                gaUpdate(title, slug);
             }
 
             var prev = slugs[index - 1];
@@ -69,20 +86,20 @@
                 slug: slug
             };
             // auto scrolling to side bar to specified slug in url
-            if (slugs.length > 1) {
-                var loc = 'sidebar-' + slug;
-                $location.hash(loc);
-                $anchorScroll();
-            }
+            // if (slugs.length > 1) {
+            //     var loc = 'sidebar-' + slug;
+            //     $location.hash(loc);
+            //     $anchorScroll();
+            // }
         };
 
 
 
         // When new posts are loaded as infinite scroll, social sharing buttons
         // need to be initialized. This function is called right after the ng-repeat
-        // tag gets updated via the $scope.posts variable.
+        // tag gets updated via the vm.posts variable.
 
-        $scope.updateShareThis = function() {
+        function updateShareThis() {
             $timeout(function() {
                 if (stButtons) {
                     stButtons.locateElements();
@@ -95,7 +112,7 @@
         // This function is used at several locations within this controller and on the UI.
         // Modify this function to return correct slug value from your urls if your urls
         // are structured differently.
-        $scope.getSlug = function(str) {
+        function getSlug(str) {
             if (angular.isUndefined(str)) {
                 return "";
             }
@@ -106,7 +123,7 @@
 
         // This function is used from ui directive to assign active class to the currently
         // visible post in the sidebar.
-        $scope.slugClass = function(slug) {
+        function slugClass(slug) {
             var cls = {
                 'is-active': slug == $location.path().replace("/", "")
             };
@@ -114,7 +131,7 @@
         };
 
         // Index URL on Google.
-        $scope.gaUpdate = function(title, slug) {
+        function gaUpdate(title, slug) {
             ga(
                 'send', 'pageview', {
                     'page': slug,
