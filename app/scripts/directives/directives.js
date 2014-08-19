@@ -1,17 +1,21 @@
 'use strict';
+(function() {
+    /* Directives */
 
-/* Directives */
+    angular.module('sarusApp.directives', [])
+        .directive('repeatDone', repeatDone)
+        .directive('whenScrolled', whenScrolled);
 
-angular.module('sarusApp.directives', [])
-    .directive('repeatDone', function() {
+    function repeatDone() {
         return function(scope, element, attrs) {
             if (scope.$last) {
                 // all are rendered
                 scope.$eval(attrs.repeatDone);
             }
         }
-    })
-    .directive('whenScrolled', function() {
+    }
+
+    function whenScrolled() {
         // Runs during compile
         return {
             scope: {
@@ -31,4 +35,6 @@ angular.module('sarusApp.directives', [])
                 });
             }
         };
-    });
+    };
+
+}());
