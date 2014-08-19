@@ -24,6 +24,7 @@
         $routeProvider.
         when('/:slug', {
             controller: 'PostController',
+            controllerAs: 'vm',
             resolve: {}
         }).otherwise({
             redirectTo: '/'
@@ -33,5 +34,5 @@
 
 
 
-/*IIFE Immediately Invoked Function Expression*/
+    /*IIFE Immediately Invoked Function Expression*/
 }());
