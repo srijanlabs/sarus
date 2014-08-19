@@ -1,8 +1,12 @@
 'use strict';
-
 /* factory */
-angular.module('sarusApp.factories', [])
-    .factory('Feed', function($http) {
+(function() {
+
+
+    angular.module('sarusApp.factories', [])
+        .factory('Feed', Feed);
+
+    function Feed($http) {
         // Constructor Function
         function Feed() {
             this.articles = [];
@@ -77,4 +81,8 @@ angular.module('sarusApp.factories', [])
 
         };
         return Feed;
-    });
+    }
+
+
+
+}());
