@@ -11,8 +11,7 @@
     function PostsController($location, $anchorScroll, $http, $routeParams, $timeout, Feed) {
         var vm = this;
         vm.feed = new Feed();
-        vm.feed.initial_loading(0, 10, [0,1]);// constructor 0-10 slugs + first feed
-
+        vm.feed.initial_loading(0, 10, [0]); // constructor 0-10 slugs + first feed
         vm.loadMoreSlugs = loadMoreSlugs;
         vm.navPost = navPost;
         vm.loadNextArticle = loadNextArticle;
@@ -32,9 +31,7 @@
         };
         // navigation from sidebar
         function navPost(index) {
-            vm.feed.full_articles = [];
-            vm.feed.render_Article(index);
-            vm.feed.render_Article(index+1);
+            vm.feed.loadSpecificArticle(index);
         };
 
         function loadNextArticle(inview) {
@@ -43,21 +40,20 @@
             if (inview == false) {
                 return false;
             }
-            var len = vm.feed.full_articles.length;
-            if (vm.feed.full_articles[len - 1]) {
-                var index = vm.feed.full_articles[len - 1].index;
-                var next_index = index + 1;
-                vm.feed.render_Article(next_index);
+            vm.feed.checkAndLoadArticle();
 
-            } else
-                console.log("no found!");
         };
 
         // Initialize an empty array for the slugs.
         var slugs = [];
         // This function allows to change current url of the browser.
         // This is required to show correct url to the user based on the post in view.
-        function changeUrl(title, slug, index, inview, inviewpart) {
+        function changeUrl(title, slug, index, inview, inviewpart, articleIndex) {
+
+            // if an article is too small that both top and bottom are available then load more article
+            if (index && inviewpart === "both")
+                vm.feed.checkAndLoadArticle(articleIndex);
+
             if (document.body.scrollTop == 0) {
                 return false;
             }
@@ -67,6 +63,7 @@
             // element comes in view.
             if (inview == true) {
                 $location.path("/" + slug);
+                vm.feed.checkAndLoadArticle(articleIndex);
                 // Let Google know of change in post.
                 gaUpdate(title, slug);
             }
