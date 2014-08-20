@@ -1,7 +1,7 @@
 *, :before, :after {
--moz-box-sizing: border-box;
--web-box-sizing: border-box;
-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -web-box-sizing: border-box;
+    box-sizing: border-box;
 }
 body {
     padding-top: 51px;
@@ -11,6 +11,9 @@ body {
 a {
     text-decoration: none;
 }
+a:hover {
+    cursor: pointer;
+}
 .mainheader {
     background-color: #000 !important;
     border-bottom: 3px solid rgba(196, 194, 196, .9);
@@ -19,18 +22,27 @@ a {
 .logo {
     float: left;
 }
+/*   side bar css */
+
 .sidebar {
+    height: 100%;
     padding-top: 20px;
     background: #ffffff;
     border-radius: 10px 0 0 10px;
-    height: 87.5%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.sidebar-links {
+    display: block;
+    padding: 1em 0px 1em 1em;
+    border-bottom: 1px solid #E0E0E0;
 }
 .sidebar .article-list-item {
     font-family: Source Sans Pro, Scada;
     font-weight: bold;
     padding: 0 1rem 0 0;
     color: #666666;
-    font-size: 1.125rem;
+    font-size: 1.725rem;
     line-height: 1.2em;
 }
 .sidebar .article-list-item:first-child a {
@@ -44,15 +56,18 @@ a {
     color: #66cccc;
     background-color: #ffffff;
 }
-
-#right.article-stream {
-background: #ffffff;
-border-radius: 0 10px 10px 0;
-overflow-x: hidden;
-}
 .article-stream {
+    height: 100%;
+    position: fixed;
+    margin-bottom: 10px;
+    overflow-x: hidden;
     padding-left: 2em !important;
     padding-right: 1em !important;
+}
+#right.article-stream {
+
+    background: #ffffff;
+    border-radius: 0 10px 10px 0;
 }
 .article__body .field-name-body p, .article__body .field-name-body p strong, .article__body .field-name-body div, .article__body .field-name-body strong {
     /*margin-bottom: 0;*/
@@ -62,9 +77,8 @@ overflow-x: hidden;
     line-height: 1.3;
 }
 .article__body .field-name-body {
-margin-bottom: 1.3rem;
+    margin-bottom: 1.3rem;
 }
-
 .article__body {
     display: inline-block;
 }
@@ -72,14 +86,16 @@ margin-bottom: 1.3rem;
     display: inline-block;
     float: left;
 }
-
 .article__body .field-name-field-highlight h2 {
     font-size: 0.9em;
     font-weight: 600;
     color: #666;
 }
-
-
+.field-item div img {
+    display: inline-block;
+    height: auto;
+    max-width: 100%;
+}
 /*
 .s
 /*#content.container {
