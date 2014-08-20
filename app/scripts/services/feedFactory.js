@@ -11,7 +11,7 @@
         function Feed() {
             this.articles = [];
             this.full_articles = [];
-            this.url = "http://localhost:3000/api/";
+            this.url = "/api/";
         }
 
         Feed.prototype = {
