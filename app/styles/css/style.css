@@ -81,25 +81,22 @@ img {
         width: 0%;
         position: fixed;
     }
-    .article__title > a {
-        font-size: 27pt;
-        font-family: time-icons;
+    .article__title  a {
+        font-size: 50pt;
         font-family: franklin-gothic-urw, sans-serif;
         font-variant: normal;
         font-weight: 600;
     }
     .article__body .field-name-field-highlight h2 {
-        font-size: 23pt;
-        font-family: time-icons;
+        font-size: 45pt;
         font-family: franklin-gothic-urw, sans-serif;
         font-weight: 400;
         color: #666;
     }
     .article__body .field-name-body p, .article__body .field-name-body p strong, .article__body .field-name-body div, .article__body .field-name-body strong {
         /*margin-bottom: 0;*/
-        font-family: time-icons;
         font-family: franklin-gothic-urw, sans-serif;
-        font-size: 19pt;
+        font-size: 40pt;
         color: #666;
         line-height: 1.3;
     }
@@ -128,24 +125,21 @@ img {
         position: fixed;
     }
     .article__title > a {
-        font-size: 27pt;
-        font-family: time-icons;
+        font-size: 50pt;
         font-family: franklin-gothic-urw, sans-serif;
         font-variant: normal;
         font-weight: 600;
     }
     .article__body .field-name-field-highlight h2 {
-        font-size: 23pt;
-        font-family: time-icons;
+        font-size: 45pt;
         font-family: franklin-gothic-urw, sans-serif;
         font-weight: 400;
         color: #666;
     }
     .article__body .field-name-body p, .article__body .field-name-body p strong, .article__body .field-name-body div, .article__body .field-name-body strong {
         /*margin-bottom: 0;*/
-        font-family: time-icons;
         font-family: franklin-gothic-urw, sans-serif;
-        font-size: 19pt;
+        font-size: 40pt;
         color: #666;
         line-height: 1.3;
     }
@@ -175,7 +169,7 @@ img {
         width: 20%;
         position: fixed;
     }
-    .article__title > a {
+    .article__title  a {
         font-size: 27pt;
         font-family: time-icons;
         font-family: franklin-gothic-urw, sans-serif;
@@ -224,24 +218,21 @@ img {
         position: fixed;
     }
     .article__title a {
-        font-size: 27pt;
-        font-family: time-icons;
+        font-size: 20pt;
         font-family: franklin-gothic-urw, sans-serif;
         font-variant: normal;
         font-weight: 600;
     }
     .article__body .field-name-field-highlight h2 {
-        font-size: 23pt;
-        font-family: time-icons;
+        font-size: 17.5pt;
         font-family: franklin-gothic-urw, sans-serif;
         font-weight: 400;
         color: #666;
     }
     .article__body .field-name-body p, .article__body .field-name-body p strong, .article__body .field-name-body div, .article__body .field-name-body strong {
         /*margin-bottom: 0;*/
-        font-family: time-icons;
         font-family: franklin-gothic-urw, sans-serif;
-        font-size: 19pt;
+        font-size: 15pt;
         color: #666;
         line-height: 1.3;
     }
