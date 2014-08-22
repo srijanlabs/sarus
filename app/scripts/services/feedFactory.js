@@ -105,7 +105,7 @@
                     if (scope.full_articles[len - 1]) {
                         var index = scope.full_articles[len - 1].index;
                         var next_index = index + 1;
-                        console.log(scope.prev_article, next_index);
+                        // console.log(scope.prev_article, next_index);
                         if (scope.prev_article < next_index) {
                             scope.prev_article = next_index;
                             scope.render_Article(next_index);
