@@ -9,7 +9,7 @@
         <DIV class="wrapper_main">
 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pull-right ">
-                <main id="right" class="article-stream" in-view-container>
+                <main id="right" class="article-stream responsive" in-view-container>
                     <article ng-repeat="post in vm.feed.full_articles track by $index" repeat-done="vm.updateShareThis();" class="article" ng-init="title = post.title">
                         <h1 class="title article__title">
                             <a href="/{{vm.getSlug(post.url)}}" in-view="vm.changeUrl(title, '{{vm.getSlug(post.url)}}', $index, $inview, $inviewpart,post.index)" in-view-offset="0">{{post.title}}</a>
@@ -21,10 +21,17 @@
                         </div>
                     </article>
                     <!-- Load next article as soon as user is 600 px above this div -->
-                     <div in-view="vm.loadNextArticle($inview);" in-view-offset="-700"></div>
-                    <div in-view="vm.loadNextArticle($inview);" in-view-offset="-30" id="loading" class="loader"></div>
+                    <div in-view="vm.loadNextArticle($inview);" in-view-offset="-700"></div>
+                    <div in-view="vm.loadNextArticle($inview);" in-view-offset="-50"></div>
+                    <div in-view="vm.loadNextArticle($inview);" in-view-offset="-20" id="loading" class="loader"></div>
                 </main>
             </div>
         </DIV>
     </div>
 </div>
+
+
+
+
+<bs3-navbar
+
