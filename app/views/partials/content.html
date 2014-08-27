@@ -15,7 +15,7 @@
                             <a href="/{{vm.getSlug(post.url)}}" in-view="vm.changeUrl(title, '{{vm.getSlug(post.url)}}', $index, $inview, $inviewpart,post.index)" in-view-offset="0">{{post.title}}</a>
                         </h1>
                         <div class="post article__body">
-                            <div ng-bind-html="post.summary"></div>
+                            <div ng-bind-html="post.description"></div>
                             <!-- Add ShareThis -->
                             <div ng-include="'views/others/_sharethis.html'"></div>
                         </div>
