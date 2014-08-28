@@ -10,7 +10,7 @@
 
     function PostsController($location, $anchorScroll, $http, $routeParams, $timeout, Feed) {
         var vm = this;
-        vm.sidebar_class=true;
+        vm.sidebar_class = true;
         vm.feed = new Feed();
         vm.feed.initial_loading(0, 10, [0]); // constructor 0-10 slugs + first feed
         vm.loadMoreSlugs = loadMoreSlugs;
@@ -26,11 +26,13 @@
 
         //////////////////////////
         var toggled_sidebar = true;
-         function   toggle_sidebar( ) {
 
-           vm.sidebar_class=!vm.sidebar_class;
-           console.log(vm.sidebar_class);
-         };
+        function toggle_sidebar() {
+
+            vm.sidebar_class = !vm.sidebar_class;
+            console.log(vm.sidebar_class);
+        };
+
         function loadMoreSlugs() {
             vm.feed.load_more_feed(function(done) {
 
@@ -38,6 +40,7 @@
         };
         // navigation from sidebar
         function navPost(index) {
+            vm.toggle_sidebar();
             vm.feed.loadSpecificArticle(index);
         };
 
