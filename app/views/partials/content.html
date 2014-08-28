@@ -1,14 +1,14 @@
 <!-- Include sidebar -->
 <div class="container-fluid">
-    <div ng-controller="PostsController as vm" class="row">
+    <div class="row">
         <div class="wrapper_sidebar">
-            <div class="hidden-xs hidden-sm col-md-12 col-lg-12 pull-left" role="navigation">
+            <div ng-class="{'hidden-xs hidden-sm col-md-12 col-lg-12 pull-left':vm.sidebar_class,' toggled_sidebar':!vm.sidebar_class}" role="navigation">
                 <ng-include src="'views/partials/sidebar.html'"></ng-include>
             </div>
         </div>
         <DIV class="wrapper_main">
 
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pull-right ">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pull-right">
                 <main id="right" class="article-stream responsive" in-view-container>
                     <article ng-repeat="post in vm.feed.full_articles track by $index" repeat-done="vm.updateShareThis();" class="article" ng-init="title = post.title">
                         <h1 class="title article__title">
