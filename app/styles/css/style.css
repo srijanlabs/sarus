@@ -30,10 +30,14 @@ img {
     box-shadow: 0 5px 5px rgba(223, 222, 224, 1);
 }
 .navbar-default .navbar-toggle .icon-bar {
-background-color: white !important;
+    background-color: white !important;
 }
 .logo {
     float: left;
+}
+.btn_sidebar_toggle {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .toggled_sidebar {
     padding-left: 2%;
