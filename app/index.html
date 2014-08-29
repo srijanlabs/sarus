@@ -2,12 +2,9 @@
 
 <head>
     <base href="/" />
-    <link href="/styles/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
-    <link href="/styles/css/print.css" media="print" rel="stylesheet" type="text/css" />
     <link href="/styles/css/style.css" media="screen" rel="stylesheet" type="text/css" />
-    <!--[if IE]>
-      <link href="/styles/css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
-      <![endif]-->
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-route.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-sanitize.js"></script>
@@ -18,16 +15,19 @@
     <script src="scripts/controllers/controllers.js"></script>
     <script src="scripts/services/feedFactory.js"></script>
     <script src="scripts/filters/filters.js"></script>
-
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600">
 </head>
 
 <body>
+
     <ng-include src="'views/partials/header.html'"></ng-include>
-    <div id="content" class="container">
-        <ng-include src="'views/partials/content.html'"></ng-include>
-    </div>
+
+    <ng-include src="'views/partials/content.html'"></ng-include>
+
     <ng-include src="'views/others/_ga.html'"></ng-include>
+
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 <!-- share this scripts below -->
 <script type="text/javascript">

@@ -1,20 +1,37 @@
-<div ng-controller="PostsController as vm">
-    <main id="right" class="article-stream">
-        <article ng-repeat="post in vm.feed.full_articles track by $index" repeat-done="vm.updateShareThis();" class="article" ng-init="title = post.title">
-            <h1 class="title article__title">
-                <a href="/{{vm.getSlug(post.url)}}" in-view="vm.changeUrl(title, '{{vm.getSlug(post.url)}}', $index, $inview, $inviewpart,post.index)" in-view-offset="0">{{post.title}}</a>
-            </h1>
-            <div class="post article__body">
-                <div ng-bind-html="post.summary"></div>
-                <!-- Add ShareThis -->
-                <div ng-include="'views/others/_sharethis.html'"></div>
+<!-- Include sidebar -->
+<div class="container-fluid">
+    <div ng-controller="PostsController as vm" class="row">
+        <div class="wrapper_sidebar">
+            <div class="hidden-xs hidden-sm col-md-12 col-lg-12 pull-left" role="navigation">
+                <ng-include src="'views/partials/sidebar.html'"></ng-include>
             </div>
-        </article>
-        <!-- Load next article as soon as user is 600 px above this div -->
-        <div in-view="vm.loadNextArticle($inview);" in-view-offset="-400"></div>
-        <div in-view="vm.loadNextArticle($inview);" in-view-offset="-10" id="loading" class="loader"></div>
-    </main>
+        </div>
+        <DIV class="wrapper_main">
 
-    <!-- Include sidebar -->
-    <ng-include src="'views/partials/sidebar.html'"></ng-include>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pull-right ">
+                <main id="right" class="article-stream responsive" in-view-container>
+                    <article ng-repeat="post in vm.feed.full_articles track by $index" repeat-done="vm.updateShareThis();" class="article" ng-init="title = post.title">
+                        <h1 class="title article__title">
+                            <a href="/{{vm.getSlug(post.url)}}" in-view="vm.changeUrl(title, '{{vm.getSlug(post.url)}}', $index, $inview, $inviewpart,post.index)" in-view-offset="0">{{post.title}}</a>
+                        </h1>
+                        <div class="post article__body">
+                            <div ng-bind-html="post.summary"></div>
+                            <!-- Add ShareThis -->
+                            <div ng-include="'views/others/_sharethis.html'"></div>
+                        </div>
+                    </article>
+                    <!-- Load next article as soon as user is 600 px above this div -->
+                    <div in-view="vm.loadNextArticle($inview);" in-view-offset="-700"></div>
+                    <div in-view="vm.loadNextArticle($inview);" in-view-offset="-50"></div>
+                    <div in-view="vm.loadNextArticle($inview);" in-view-offset="-20" id="loading" class="loader"></div>
+                </main>
+            </div>
+        </DIV>
+    </div>
 </div>
+
+
+
+
+<bs3-navbar
+
