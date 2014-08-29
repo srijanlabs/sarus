@@ -2,7 +2,7 @@
     <main id="right" class="article-stream">
         <article ng-repeat="post in vm.feed.full_articles track by $index" repeat-done="vm.updateShareThis();" class="article" ng-init="title = post.title">
             <h1 class="title article__title">
-                <a href="/{{vm.getSlug(post.url)}}" in-view="vm.changeUrl(title, '{{vm.getSlug(post.url)}}', $index, $inview, $inviewpart)" in-view-offset="0">{{post.title}}</a>
+                <a href="/{{vm.getSlug(post.url)}}" in-view="vm.changeUrl(title, '{{vm.getSlug(post.url)}}', $index, $inview, $inviewpart,post.index)" in-view-offset="0">{{post.title}}</a>
             </h1>
             <div class="post article__body">
                 <div ng-bind-html="post.summary"></div>
@@ -11,7 +11,8 @@
             </div>
         </article>
         <!-- Load next article as soon as user is 600 px above this div -->
-        <div in-view="vm.loadNextArticle($inview);" in-view-offset="-80" id="loading" class="loader"></div>
+        <div in-view="vm.loadNextArticle($inview);" in-view-offset="-400"></div>
+        <div in-view="vm.loadNextArticle($inview);" in-view-offset="-10" id="loading" class="loader"></div>
     </main>
 
     <!-- Include sidebar -->
