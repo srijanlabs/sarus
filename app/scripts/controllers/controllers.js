@@ -10,6 +10,7 @@
 
     function PostsController($location, $anchorScroll, $http, $routeParams, $timeout, Feed) {
         var vm = this;
+        vm.sidebar_class = true;
         vm.feed = new Feed();
         vm.feed.initial_loading(0, 10, [0]); // constructor 0-10 slugs + first feed
         vm.loadMoreSlugs = loadMoreSlugs;
@@ -20,10 +21,16 @@
         vm.slugClass = slugClass;
         vm.updateShareThis = updateShareThis;
         vm.gaUpdate = gaUpdate;
-
+        vm.toggle_sidebar = toggle_sidebar;
 
 
         //////////////////////////
+        var toggled_sidebar = true;
+
+        function toggle_sidebar() {
+            vm.sidebar_class = !vm.sidebar_class;
+        };
+
         function loadMoreSlugs() {
             vm.feed.load_more_feed(function(done) {
 
@@ -31,6 +38,7 @@
         };
         // navigation from sidebar
         function navPost(index) {
+            vm.sidebar_class = true;
             vm.feed.loadSpecificArticle(index);
         };
 
@@ -46,13 +54,16 @@
 
         // Initialize an empty array for the slugs.
         var slugs = [];
+        var last = {};
         // This function allows to change current url of the browser.
         // This is required to show correct url to the user based on the post in view.
         function changeUrl(title, slug, index, inview, inviewpart, articleIndex) {
 
             // if an article is too small that both top and bottom are available then load more article
-            if (index && inviewpart === "both")
+            if (index && inviewpart === "both") {
                 vm.feed.checkAndLoadArticle(articleIndex);
+                $location.path("/" + slug);
+            }
 
             if (document.body.scrollTop == 0) {
                 return false;
@@ -61,7 +72,7 @@
             // The inview module detects both when an element comes in views or goes
             // out of views hence we only need to trigger the change when the
             // element comes in view.
-            if (inview == true) {
+            if (inview == true && inviewpart === "top") {
                 $location.path("/" + slug);
                 vm.feed.checkAndLoadArticle(articleIndex);
                 // Let Google know of change in post.
@@ -71,10 +82,11 @@
             var prev = slugs[index - 1];
             // // Assuming that inview false means that the current slug is going out
             // // of the view by scrolling up.
-            if (inview == false && angular.isUndefined(prev) == false && inviewpart == 'bottom') {
-                // Change the browser url to the previous post slug.
-                $location.path("/" + prev.slug);
+
+            if(!inviewpart && !inview && last.inview && last.inviewpart ==="top"){
+                 $location.path("/" + prev.slug);
             }
+
 
             // //We maintain an array of slugs viewed, so that when the user scrolls
             // // back up we change the url to the previous post.
@@ -82,12 +94,15 @@
                 title: title,
                 slug: slug
             };
+
             // auto scrolling to side bar to specified slug in url
             // if (slugs.length > 1) {
             //     var loc = 'sidebar-' + slug;
             //     $location.hash(loc);
             //     $anchorScroll();
             // }
+            last.inviewpart = inviewpart;
+            last.inview =inview;
         };
 
 
