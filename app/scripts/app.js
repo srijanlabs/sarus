@@ -16,19 +16,10 @@
 
     ]).config(config);
     // Route configuration below.
-    function config($routeProvider, $locationProvider) {
+    function config($locationProvider) {
         // HTML5 mode Required to avoid urls with # anchor tags.
         $locationProvider.html5Mode(true);
 
-        // Set routing.
-        $routeProvider.
-        when('/:slug', {
-            controller: 'PostController',
-            controllerAs: 'vm',
-            resolve: {}
-        }).otherwise({
-            redirectTo: '/'
-        });
     };
 
 
