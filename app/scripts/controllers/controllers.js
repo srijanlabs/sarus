@@ -68,6 +68,7 @@
         function changeUrl(title, slug, index, inview, inviewpart, articleIndex) {
             if (inview && inviewpart === "top") {
                 mapUrl(slug);
+                gaUpdate(title, slug);
             }
 
         };
