@@ -10,9 +10,9 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pull-right">
                 <main id="right" class="article-stream responsive" in-view-container>
-                    <article ng-repeat="post in vm.feed.full_articles track by $index" repeat-done="vm.updateShareThis();" class="article" ng-init="title = post.title">
+                    <article ng-repeat="post in vm.feed.full_articles track by $index" repeat-done="vm.updateShareThis();" class="article" ng-init="title = post.title" in-view="vm.changeUrl(title, '{{vm.getSlug(post.url)}}', $index, $inview, $inviewpart,post.index)" in-view-offset="50">
                         <h1 class="title article__title">
-                            <a href="/{{vm.getSlug(post.url)}}" in-view="vm.changeUrl(title, '{{vm.getSlug(post.url)}}', $index, $inview, $inviewpart,post.index)" in-view-offset="20">{{post.title}}</a>
+                            <a href="/{{vm.getSlug(post.url)}}" >{{post.title}}</a>
                         </h1>
                         <div class="post article__body">
                             <div ng-bind-html="post.description"></div>
