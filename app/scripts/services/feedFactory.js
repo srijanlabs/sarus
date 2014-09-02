@@ -27,19 +27,45 @@
                 var scope = this;
                 scope.full_articles = [];
                 scope.prev_article = 0;
+                arr_Articles.forEach(function(el) {
+                    scope.load_Article(el);
+                });
+                scope.init_LoadSidebar(offset, count);
+            },
+
+            url_to_Article: function(slug) {
+                var scope = this;
+                scope.full_articles = [];
+                scope.prev_article = 0;
                 $http.defaults.useXDomain = true;
                 $http({
                     method: 'GET',
-                    url: scope.url + "slugs/" + offset + "/" + count
+                    url: scope.url + "article/url/" + slug
                 }).success(function(data, status) {
-                    for (var i = 0; i < data.length; i++) {
-                        var current = data[i];
-                        scope.articles.push(current);
-                    }
-                    arr_Articles.forEach(function(el) {
-                        scope.render_Article(scope.articles[el].index);
-                    });
+                    scope.full_articles.push(data);
+                    scope.init_LoadSidebar(0, 10);
+                }).error(function(error, status) {
+                    scope.initial_loading(0, 10, [0]);
+                    alert("Article Not Found!");
                 });
+            },
+
+            init_LoadSidebar: function(offset, count) {
+                var scope = this;
+                if (!scope.articles.length) {
+                    $http.defaults.useXDomain = true;
+                    $http({
+                        method: 'GET',
+                        url: scope.url + "slugs/" + offset + "/" + count
+                    }).success(function(data, status) {
+                        for (var i = 0; i < data.length; i++) {
+                            var current = data[i];
+                            scope.articles.push(current);
+                        }
+                    }).error(function(error, status) {
+
+                    });
+                }
             },
 
             /**
