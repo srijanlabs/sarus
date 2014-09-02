@@ -1,6 +1,6 @@
 'use strict';
 (function() {
-
+  var redirectedFrom = true;
     /* Controllers */
     angular.module('sarusApp.controllers', [])
         .controller('PostsController', PostsController);
@@ -12,7 +12,6 @@
         var vm = this;
         vm.sidebar_class = true;
         vm.feed = new Feed();
-        vm.feed.initial_loading(0, 10, [0]); // constructor 0-10 slugs + first feed
         vm.loadMoreSlugs = loadMoreSlugs;
         vm.navPost = navPost;
         vm.loadNextArticle = loadNextArticle;
@@ -22,6 +21,15 @@
         vm.updateShareThis = updateShareThis;
         vm.gaUpdate = gaUpdate;
         vm.toggle_sidebar = toggle_sidebar;
+        /////////////////////////////
+        var location_current = $location.path();
+        if (location_current === "/") {
+            vm.feed.initial_loading(0, 10, [0]); // constructor 0-10 slugs + first feed
+            redirectedFrom = false;
+        } else if (redirectedFrom) {
+            // redirecting to a specific feed.
+            vm.feed.url_to_Article(location_current.slice(1));
+        }
 
 
         //////////////////////////
@@ -83,8 +91,8 @@
             // // Assuming that inview false means that the current slug is going out
             // // of the view by scrolling up.
 
-            if(!inviewpart && !inview && last.inview && last.inviewpart ==="top"){
-                 $location.path("/" + prev.slug);
+            if (!inviewpart && !inview && last.inview && last.inviewpart === "top") {
+                $location.path("/" + prev.slug);
             }
 
 
@@ -102,7 +110,7 @@
             //     $anchorScroll();
             // }
             last.inviewpart = inviewpart;
-            last.inview =inview;
+            last.inview = inview;
         };
 
 
