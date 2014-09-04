@@ -4,7 +4,7 @@
 
     angular.module('sarusApp.directives', [])
         .directive('repeatDone', repeatDone)
-        .directive('whenScrolled', whenScrolled);
+        .directive('myiscroll', myiscroll);
 
     function repeatDone() {
         return function(scope, element, attrs) {
@@ -15,23 +15,23 @@
         }
     }
 
-    function whenScrolled() {
-        // Runs during compile
+    function myiscroll() {
         return {
             scope: {
-                whenScrolled: "&",
-                scrollOffSet: "@"
+                onEnd: "&"
             },
-            restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
-            link: function($scope, iElm, iAttrs, controller) {
+            restrict: 'A',
+            link: function($scope, iElm, iAttrs) {
                 var raw = iElm[0];
-                var offset = parseInt($scope.scrollOffSet);
-                iElm.bind('scroll', function() {
-                    if (raw.scrollTop + raw.offsetHeight + offset >= raw.scrollHeight) {
-                        $scope.$eval($scope.whenScrolled);
-
-                    }
-
+                var myscroll = new IScroll(raw, {
+                    scrollX: true,
+                    mouseWheel: true,
+                    scrollbars: true,
+                    click: true
+                });
+                myscroll.on('scrollEnd', function() {
+                    $scope.$eval($scope.onEnd);
+                    myscroll.refresh();
                 });
             }
         };
