@@ -14,7 +14,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback() {
         console.log('Successfully connected to MongoDB.');
-        feedModel._fetch_feeds_and_store();
+        //feedModel._fetch_feeds_and_store();
     });
 
 

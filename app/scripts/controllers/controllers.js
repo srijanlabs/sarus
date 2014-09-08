@@ -6,12 +6,12 @@
         .controller('PostsController', PostsController);
 
 
-    PostsController.$inject = ['$location', '$anchorScroll', '$http', '$routeParams', '$timeout', 'Feed'];
+    PostsController.$inject = ['$location', '$routeParams', '$timeout', 'Feed'];
 
-    function PostsController($location, $anchorScroll, $http, $routeParams, $timeout, Feed) {
+    function PostsController($location, $routeParams, $timeout, Feed) {
         var vm = this;
-        vm.sidebar_class = true;
         vm.feed = new Feed();
+        vm.sidebar_open = (window.innerWidth > 1000) ? true : false;
         vm.loadMoreSlugs = loadMoreSlugs;
         vm.navPost = navPost;
         vm.loadNextArticle = loadNextArticle;
@@ -20,8 +20,9 @@
         vm.slugClass = slugClass;
         vm.updateShareThis = updateShareThis;
         vm.gaUpdate = gaUpdate;
-        vm.toggle_sidebar = toggle_sidebar;
+
         /////////////////////////////
+
         var location_current = $location.path();
         if (location_current === "/") {
             vm.feed.initial_loading(0, 10, [0]); // constructor 0-10 slugs + first feed
@@ -33,11 +34,6 @@
 
 
         //////////////////////////
-        var toggled_sidebar = true;
-
-        function toggle_sidebar() {
-            vm.sidebar_class = !vm.sidebar_class;
-        };
 
         function loadMoreSlugs() {
             vm.feed.load_more_feed(function(done) {
@@ -46,7 +42,7 @@
         };
         // navigation from sidebar
         function navPost(index) {
-            vm.sidebar_class = true;
+            vm.sidebar_open = false;
             vm.feed.loadSpecificArticle(index);
         };
 
