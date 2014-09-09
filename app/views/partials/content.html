@@ -1,7 +1,7 @@
 <!-- Include sidebar -->
 <div class="container-fluid row">
     <div ng-class="{queueopen:vm.sidebar_open}" id="my-app">
-               <ng-include src="'views/partials/sidebar.html'"></ng-include>
+        <ng-include src="'views/partials/sidebar.html'"></ng-include>
 
         <DIV class="view" id="view-itemwell">
 
@@ -14,6 +14,9 @@
                         <div ng-bind-html="post.description"></div>
                         <!-- Add ShareThis -->
                         <div ng-include="'views/others/_sharethis.html'"></div>
+                    </div>
+                    <div class="cust_disqus">
+                    <disqus-dir hit="vm.load_disqus(post.index,post.title,'http://localhost:3000')">Comments</disqus-dir>
                     </div>
                 </article>
                 <!-- Load next article as soon as user is 600 px above this div -->
