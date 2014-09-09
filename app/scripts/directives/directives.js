@@ -16,7 +16,7 @@
             link: function($scope, iElm, iAttrs, controller) {
                 iElm.bind('click', function() {
                     var x = document.getElementById('remove_disqus');
-                    if (x) x.parentElement.removeChild(x);
+                    if (x) x.parentElement.innerHTML = '<disqus-dir hit="vm.load_disqus(post.index,post.title,http://localhost:3000)">   <div class="share_icon"><a>Comment</a></div></disqus-dir>';
 
                     this.innerHTML = "<div id='remove_disqus' ><div id='disqus_thread' > </div> </div>";
                     $scope.$eval($scope.hit);
