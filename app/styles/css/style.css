@@ -162,3 +162,7 @@ img {
     display: inline-block;
     float: left;
 }
+.cust_disqus{
+    min-height: 200px;
+    max-height: 500px;
+}
