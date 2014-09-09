@@ -6,9 +6,9 @@
         .controller('PostsController', PostsController);
 
 
-    PostsController.$inject = ['$location', '$routeParams', '$timeout', 'Feed'];
+    PostsController.$inject = ['$location', '$routeParams', '$timeout', 'Feed', '$window'];
 
-    function PostsController($location, $routeParams, $timeout, Feed) {
+    function PostsController($location, $routeParams, $timeout, Feed, $window) {
         var vm = this;
         vm.feed = new Feed();
         vm.sidebar_open = (window.innerWidth > 1000) ? true : false;
@@ -20,8 +20,8 @@
         vm.slugClass = slugClass;
         vm.updateShareThis = updateShareThis;
         vm.gaUpdate = gaUpdate;
-
-        /////////////////////////////
+        vm.load_disqus = load_disqus;
+        // /////////////////////////////
 
         var location_current = $location.path();
         if (location_current === "/") {
@@ -40,6 +40,8 @@
 
             });
         };
+
+
         // navigation from sidebar
         function navPost(index) {
             vm.sidebar_open = false;
@@ -56,6 +58,7 @@
 
         };
 
+
         function mapUrl(url_part) {
             $location.path("/" + url_part);
         };
@@ -66,7 +69,33 @@
                 mapUrl(slug);
                 gaUpdate(title, slug);
             }
+        };
 
+        function load_disqus(disqus_identifier, disqus_title, disqus_url) {
+            $window.disqus_shortname = 'sarus-dev';
+            $window.disqus_identifier = disqus_identifier;
+            $window.disqus_title = disqus_title;
+            $window.disqus_url = "http://localhost:3000/" + disqus_url;
+            //$window.disqus_category_id = disqus_category_id;
+            // $window.disqus_disable_mobile = disqus_disable_mobile;
+
+            // get the remote Disqus script and insert it into the DOM, but only if it not already loaded (as that will cause warnings)
+            if (!$window.DISQUS) {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + $window.disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            } else {
+                $window.DISQUS.reset({
+                    reload: true,
+                    config: function() {
+                        this.page.identifier = $window.disqus_identifier;
+                        this.page.url = $window.disqus_url;
+                        this.page.title = $window.disqus_title;
+                    }
+                });
+            }
         };
 
 
