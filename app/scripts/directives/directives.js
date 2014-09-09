@@ -4,7 +4,26 @@
 
     angular.module('sarusApp.directives', [])
         .directive('repeatDone', repeatDone)
-        .directive('myiscroll', myiscroll);
+        .directive('myiscroll', myiscroll)
+        .directive('disqusDir', disqusDir);
+
+    function disqusDir() {
+        return {
+            scope: {
+                hit: "&"
+            }, // {} = isolate, true = child, false/undefined = no change
+            restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+            link: function($scope, iElm, iAttrs, controller) {
+                iElm.bind('click', function() {
+                    var x = document.getElementById('remove_disqus');
+                    if (x) x.parentElement.removeChild(x);
+
+                    this.innerHTML = "<div id='remove_disqus' ><div id='disqus_thread' > </div> </div>";
+                    $scope.$eval($scope.hit);
+                });
+            }
+        };
+    };
 
     function repeatDone() {
         return function(scope, element, attrs) {
