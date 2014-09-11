@@ -21,6 +21,7 @@
         vm.updateShareThis = updateShareThis;
         vm.gaUpdate = gaUpdate;
         vm.load_disqus = load_disqus;
+        vm.disqus_sidebar = false;
         // /////////////////////////////
 
         var location_current = $location.path();
@@ -73,9 +74,11 @@
         };
 
         function load_disqus(disqus_identifier, disqus_title, disqus_url) {
+            vm.disqus_sidebar = true;
+            vm.disqus_title = disqus_title;
             $window.disqus_shortname = 'sarus-dev';
             $window.disqus_identifier = disqus_identifier;
-            $window.disqus_title =  disqus_title;
+            $window.disqus_title = disqus_title;
             $window.disqus_url = "http://localhost:3000/" + disqus_url;
             //$window.disqus_category_id = disqus_category_id;
             // $window.disqus_disable_mobile = disqus_disable_mobile;
@@ -88,7 +91,7 @@
                 dsq.src = '//' + $window.disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             } else {
-             //   console.log($window.disqus_identifier,$window.disqus_title,$window.disqus_url);
+                //   console.log($window.disqus_identifier,$window.disqus_title,$window.disqus_url);
                 $window.DISQUS.reset({
                     reload: true,
                     config: function() {
