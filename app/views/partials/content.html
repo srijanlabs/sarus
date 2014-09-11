@@ -1,19 +1,25 @@
 <!-- Include sidebar -->
 <div class="container-fluid row">
     <div ng-class="{queueopen:vm.sidebar_open}" id="my-app">
-               <ng-include src="'views/partials/sidebar.html'"></ng-include>
+        <ng-include src="'views/partials/sidebar.html'"></ng-include>
 
         <DIV class="view" id="view-itemwell">
 
             <main id="right_view" class="article-stream responsive" in-view-container ng-click="vm.sidebar_open = false;">
-                <article ng-repeat="post in vm.feed.full_articles track by $index" repeat-done="vm.updateShareThis();" class="article" ng-init="title = post.title" in-view="vm.changeUrl(title, '{{vm.getSlug(post.url)}}', $index, $inview, $inviewpart,post.index)" in-view-offset="50">
-                    <h1 class="title article__title">
-                        <a href="/{{vm.getSlug(post.url)}}">{{post.title}}</a>
-                    </h1>
+                <article ng-repeat="post in vm.feed.full_articles track by $index" repeat-done="vm.updateShareThis();" class="article" ng-init="url = vm.getSlug(post.url)" in-view="vm.changeUrl(post.title, url, $index, $inview, $inviewpart,post.index)" in-view-offset="50">
+                    <h2 class="title article__title">
+                        <a href="/{{url}}">{{post.title}}</a>
+                    </h2>
                     <div class="post article__body">
                         <div ng-bind-html="post.description"></div>
                         <!-- Add ShareThis -->
                         <div ng-include="'views/others/_sharethis.html'"></div>
+                    </div>
+                    <div class="cust_disqus">
+                        <disqus-dir hit="vm.load_disqus(post.index,post.title,url)">
+                            <div class="share_icon"><a>Comment</a>
+                            </div>
+                        </disqus-dir>
                     </div>
                 </article>
                 <!-- Load next article as soon as user is 600 px above this div -->

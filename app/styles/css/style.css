@@ -70,6 +70,7 @@ img {
 #view-itemwell {
     position: relative;
     float: right;
+    width: 100%;
 }
 .button_sidebar {
     position: relative;
@@ -147,6 +148,8 @@ img {
 }
 .article__body .field-name-field-highlight h2 {
     color: #666;
+    font-size: 100% !important;
+    line-height: 1.27em;
 }
 .article__body .field-name-body p, .article__body .field-name-body p strong, .article__body .field-name-body div, .article__body .field-name-body strong {
     color: #666;
@@ -161,4 +164,18 @@ img {
 .article__body .st_sharethis_large, .article__body .st_facebook_large, .article__body .st_twitter_large, .article__body .st_linkedin_large, .article__body .st_pinterest_large, .article__body .st_email_large, .article__body .st_fblike_large, .article__body .st_plusone_large {
     display: inline-block;
     float: left;
+}
+.cust_disqus {
+    min-height: 130px;
+}
+.cust_disqus .share_icon {
+    float: left;
+    margin: 10px;
+}
+.share_icon a {
+    float: left;
+    background: url("/images/icon_shares.png") 0 0 no-repeat;
+    height: 32px;
+    width: 32px;
+    text-indent: -9999px;
 }
