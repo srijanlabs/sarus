@@ -61,6 +61,7 @@
 
         function mapUrl(url_part) {
             $location.path("/" + url_part);
+            $window.document.title = url_part;
         };
         // This function allows to change current url of the browser.
         // This is required to show correct url to the user based on the post in view.
@@ -74,7 +75,7 @@
         function load_disqus(disqus_identifier, disqus_title, disqus_url) {
             $window.disqus_shortname = 'sarus-dev';
             $window.disqus_identifier = disqus_identifier;
-            $window.disqus_title = disqus_title;
+            $window.disqus_title =  disqus_title;
             $window.disqus_url = "http://localhost:3000/" + disqus_url;
             //$window.disqus_category_id = disqus_category_id;
             // $window.disqus_disable_mobile = disqus_disable_mobile;
@@ -87,12 +88,14 @@
                 dsq.src = '//' + $window.disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             } else {
+             //   console.log($window.disqus_identifier,$window.disqus_title,$window.disqus_url);
                 $window.DISQUS.reset({
                     reload: true,
                     config: function() {
                         this.page.identifier = $window.disqus_identifier;
                         this.page.url = $window.disqus_url;
                         this.page.title = $window.disqus_title;
+
                     }
                 });
             }
