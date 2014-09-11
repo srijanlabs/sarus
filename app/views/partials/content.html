@@ -12,15 +12,15 @@
                     </h2>
                     <div class="post article__body">
                         <div ng-bind-html="post.description"></div>
-                        <!-- Add ShareThis -->
-                        <div ng-include="'views/others/_sharethis.html'"></div>
                     </div>
                     <div class="cust_disqus">
-                        <disqus-dir hit="vm.load_disqus(post.index,post.title,url)">
-                            <div class="share_icon"><a>Comment</a>
-                            </div>
-                        </disqus-dir>
+                        <div class="share_icon" ng-click="vm.load_disqus(post.index,post.title,url)"><a>Comment</a>
+                        </div>
+                        <div class="share_this">
+                            <div ng-include="'views/others/_sharethis.html'"></div>
+                        </div>
                     </div>
+
                 </article>
                 <!-- Load next article as soon as user is 600 px above this div -->
                 <div in-view="vm.loadNextArticle($inview);" in-view-offset="-700"></div>
