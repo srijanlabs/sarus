@@ -33,8 +33,8 @@
             }
         }
     }
-
-    function myiscroll() {
+    myiscroll.inject = ['$timeout'];
+    function myiscroll($timeout) {
         return {
             scope: {
                 onEnd: "&"
@@ -42,16 +42,22 @@
             restrict: 'A',
             link: function($scope, iElm, iAttrs) {
                 var raw = iElm[0];
-                var myscroll = new IScroll(raw, {
-                    scrollX: true,
-                    mouseWheel: true,
-                    scrollbars: true,
-                    click: true
-                });
-                myscroll.on('scrollEnd', function() {
-                    $scope.$eval($scope.onEnd);
-                    myscroll.refresh();
-                });
+                $timeout(function() {
+                    var myscroll = new IScroll(raw, {
+                        scrollX: true,
+                        mouseWheel: true,
+                        scrollbars: true,
+                        click: true
+                    });
+                    if ($scope.onEnd) {
+                        myscroll.on('scrollEnd', function() {
+                            $scope.$eval($scope.onEnd);
+                            myscroll.refresh();
+                        });
+                    }
+                }, 1000);
+
+
             }
         };
     };
