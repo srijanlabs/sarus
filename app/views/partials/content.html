@@ -5,22 +5,22 @@
 
         <DIV class="view" id="view-itemwell">
 
-            <main id="right_view" class="article-stream responsive" in-view-container ng-click="vm.sidebar_open = false;">
+            <main id="right_view" class="article-stream responsive" in-view-container ng-click="vm.body_click()">
                 <article ng-repeat="post in vm.feed.full_articles track by $index" repeat-done="vm.updateShareThis();" class="article" ng-init="url = vm.getSlug(post.url)" in-view="vm.changeUrl(post.title, url, $index, $inview, $inviewpart,post.index)" in-view-offset="50">
                     <h2 class="title article__title">
                         <a href="/{{url}}">{{post.title}}</a>
                     </h2>
                     <div class="post article__body">
                         <div ng-bind-html="post.description"></div>
-                        <!-- Add ShareThis -->
-                        <div ng-include="'views/others/_sharethis.html'"></div>
                     </div>
                     <div class="cust_disqus">
-                        <disqus-dir hit="vm.load_disqus(post.index,post.title,url)">
-                            <div class="share_icon"><a>Comment</a>
-                            </div>
-                        </disqus-dir>
+                        <div class="share_icon" ng-click="vm.load_disqus(post.index,post.title,url)"><a>Comment</a>
+                        </div>
+                        <div class="share_this">
+                            <div ng-include="'views/others/_sharethis.html'"></div>
+                        </div>
                     </div>
+
                 </article>
                 <!-- Load next article as soon as user is 600 px above this div -->
                 <div in-view="vm.loadNextArticle($inview);" in-view-offset="-700"></div>

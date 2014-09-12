@@ -1,0 +1,21 @@
+<div ng-class="vm.disqus_sidebar?'sidebar-open':'sidebar-close'">
+    <div class="comments" id="comment_drawer_top">
+        <div class="article_body">
+            <div class="kaia_page">
+                <div class="article_padding comments_inner">
+                    <h3 class="comment_heading">{{vm.disqus_title}}</h3>
+                    <div class="align_center disqus">
+                        <div id="disqus_thread" style="width:99%; border:1px solid #eee; padding:10px;min-height:100px;">
+                        </div>
+                    </div>
+                    <div class="comments_x" ng-click="vm.disqus_sidebar = false; vm.body_option_sidebar=false;">
+                        <a> Close(X) </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
