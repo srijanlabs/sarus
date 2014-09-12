@@ -22,6 +22,7 @@
         vm.gaUpdate = gaUpdate;
         vm.load_disqus = load_disqus;
         vm.disqus_sidebar = false;
+        vm.body_click = body_click
         // /////////////////////////////
 
         var location_current = $location.path();
@@ -58,7 +59,15 @@
             vm.feed.checkAndLoadArticle();
 
         };
+        vm.body_option_sidebar = false;
 
+        function body_click() {
+            vm.sidebar_open = false;
+            if (vm.body_option_sidebar){
+                vm.body_option_sidebar=false;
+                vm.disqus_sidebar = false;
+            }
+        };
 
         function mapUrl(url_part) {
             $location.path("/" + url_part);
@@ -75,6 +84,9 @@
 
         function load_disqus(disqus_identifier, disqus_title, disqus_url) {
             vm.disqus_sidebar = true;
+            $timeout(function() {
+                vm.body_option_sidebar = true;
+            }, 1000);
             vm.disqus_title = disqus_title;
             $window.disqus_shortname = 'sarus-dev';
             $window.disqus_identifier = disqus_identifier;
