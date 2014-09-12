@@ -1,18 +1,17 @@
 'use strict';
 (function() {
-
+    var redirectedFrom = true;
     /* Controllers */
     angular.module('sarusApp.controllers', [])
         .controller('PostsController', PostsController);
 
 
-    PostsController.$inject = ['$location', '$anchorScroll', '$http', '$routeParams', '$timeout', 'Feed'];
+    PostsController.$inject = ['$location', '$routeParams', '$timeout', 'Feed', '$window'];
 
-    function PostsController($location, $anchorScroll, $http, $routeParams, $timeout, Feed) {
+    function PostsController($location, $routeParams, $timeout, Feed, $window) {
         var vm = this;
         vm.feed = new Feed();
-        vm.feed.initial_loading(0, 10, [0,1]);// constructor 0-10 slugs + first feed
-
+        vm.sidebar_open = (window.innerWidth > 1000) ? true : false;
         vm.loadMoreSlugs = loadMoreSlugs;
         vm.navPost = navPost;
         vm.loadNextArticle = loadNextArticle;
@@ -21,20 +20,34 @@
         vm.slugClass = slugClass;
         vm.updateShareThis = updateShareThis;
         vm.gaUpdate = gaUpdate;
+        vm.load_disqus = load_disqus;
+        vm.disqus_sidebar = false;
+        vm.body_click = body_click
+        // /////////////////////////////
 
+        var location_current = $location.path();
+        if (location_current === "/") {
+            vm.feed.initial_loading(0, 10, [0]); // constructor 0-10 slugs + first feed
+            redirectedFrom = false;
+        } else if (redirectedFrom) {
+            // redirecting to a specific feed.
+            vm.feed.url_to_Article(location_current.slice(1));
+        }
 
 
         //////////////////////////
+
         function loadMoreSlugs() {
             vm.feed.load_more_feed(function(done) {
 
             });
         };
+
+
         // navigation from sidebar
         function navPost(index) {
-            vm.feed.full_articles = [];
-            vm.feed.render_Article(index);
-            vm.feed.render_Article(index+1);
+            vm.sidebar_open = false;
+            vm.feed.loadSpecificArticle(index);
         };
 
         function loadNextArticle(inview) {
@@ -43,54 +56,64 @@
             if (inview == false) {
                 return false;
             }
-            var len = vm.feed.full_articles.length;
-            if (vm.feed.full_articles[len - 1]) {
-                var index = vm.feed.full_articles[len - 1].index;
-                var next_index = index + 1;
-                vm.feed.render_Article(next_index);
+            vm.feed.checkAndLoadArticle();
 
-            } else
-                console.log("no found!");
+        };
+        vm.body_option_sidebar = false;
+
+        function body_click() {
+            vm.sidebar_open = false;
+            if (vm.body_option_sidebar){
+                vm.body_option_sidebar=false;
+                vm.disqus_sidebar = false;
+            }
         };
 
-        // Initialize an empty array for the slugs.
-        var slugs = [];
+        function mapUrl(url_part) {
+            $location.path("/" + url_part);
+            $window.document.title = url_part;
+        };
         // This function allows to change current url of the browser.
         // This is required to show correct url to the user based on the post in view.
-        function changeUrl(title, slug, index, inview, inviewpart) {
-            if (document.body.scrollTop == 0) {
-                return false;
-            }
-
-            // The inview module detects both when an element comes in views or goes
-            // out of views hence we only need to trigger the change when the
-            // element comes in view.
-            if (inview == true) {
-                $location.path("/" + slug);
-                // Let Google know of change in post.
+        function changeUrl(title, slug, index, inview, inviewpart, articleIndex) {
+            if (inview && inviewpart === "top") {
+                mapUrl(slug);
                 gaUpdate(title, slug);
             }
+        };
 
-            var prev = slugs[index - 1];
-            // // Assuming that inview false means that the current slug is going out
-            // // of the view by scrolling up.
-            if (inview == false && angular.isUndefined(prev) == false && inviewpart == 'bottom') {
-                // Change the browser url to the previous post slug.
-                $location.path("/" + prev.slug);
+        function load_disqus(disqus_identifier, disqus_title, disqus_url) {
+            vm.disqus_sidebar = true;
+            $timeout(function() {
+                vm.body_option_sidebar = true;
+            }, 1000);
+            vm.disqus_title = disqus_title;
+            $window.disqus_shortname = 'sarus-dev';
+            $window.disqus_identifier = disqus_identifier;
+            $window.disqus_title = disqus_title;
+            $window.disqus_url = "http://localhost:3000/" + disqus_url;
+            //$window.disqus_category_id = disqus_category_id;
+            // $window.disqus_disable_mobile = disqus_disable_mobile;
+
+            // get the remote Disqus script and insert it into the DOM, but only if it not already loaded (as that will cause warnings)
+            if (!$window.DISQUS) {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + $window.disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            } else {
+                //   console.log($window.disqus_identifier,$window.disqus_title,$window.disqus_url);
+                $window.DISQUS.reset({
+                    reload: true,
+                    config: function() {
+                        this.page.identifier = $window.disqus_identifier;
+                        this.page.url = $window.disqus_url;
+                        this.page.title = $window.disqus_title;
+
+                    }
+                });
             }
-
-            // //We maintain an array of slugs viewed, so that when the user scrolls
-            // // back up we change the url to the previous post.
-            slugs[index] = {
-                title: title,
-                slug: slug
-            };
-            // auto scrolling to side bar to specified slug in url
-            // if (slugs.length > 1) {
-            //     var loc = 'sidebar-' + slug;
-            //     $location.hash(loc);
-            //     $anchorScroll();
-            // }
         };
 
 

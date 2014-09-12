@@ -1,8 +1,12 @@
 <!-- Sidebar -->
-<aside id="left" class="sidebar" when-scrolled="vm.loadMoreSlugs()" scroll-off-set="400">
-    <div ng-repeat="item in vm.feed.articles track by $index" class="article-list-item">
-        <a href="/{{vm.getSlug(item.url)}}" id="sidebar-{{vm.getSlug(item.url)}}" ng-class="vm.slugClass(vm.getSlug(item.url))" class="sidebar-links" ng-click="vm.navPost(item.index);">
-      {{item.title}}
-    </a>
+<div id="view-queue" class="view" role="navigation" myiscroll on-end="vm.loadMoreSlugs()">
+    <div id="scroller">
+        <aside class="sidebar">
+            <div ng-repeat="item in vm.feed.articles track by $index" class="article-list-item">
+                <a href="/{{vm.getSlug(item.url)}}" id="sidebar-{{vm.getSlug(item.url)}}" ng-class="vm.slugClass(vm.getSlug(item.url))" class="sidebar-links" ng-click="vm.navPost(item.index);">
+                 {{item.title}}
+                </a>
+            </div>
+        </aside>
     </div>
-</aside>
+</div>

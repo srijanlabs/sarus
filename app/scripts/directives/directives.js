@@ -4,7 +4,26 @@
 
     angular.module('sarusApp.directives', [])
         .directive('repeatDone', repeatDone)
-        .directive('whenScrolled', whenScrolled);
+        .directive('myiscroll', myiscroll)
+        .directive('disqusDir', disqusDir);
+
+    function disqusDir() {
+        return {
+            scope: {
+                hit: "&"
+            }, // {} = isolate, true = child, false/undefined = no change
+            restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+            link: function($scope, iElm, iAttrs, controller) {
+                iElm.bind('click', function() {
+                    var x = document.getElementById('remove_disqus');
+                    if (x) x.parentElement.innerHTML = '<disqus-dir hit="vm.load_disqus(post.index,post.title,url)">   <div class="share_icon"><a>Comment</a></div></disqus-dir>';
+
+                    this.innerHTML = "<div id='remove_disqus' ><div id='disqus_thread' > </div> </div>";
+                    $scope.$eval($scope.hit);
+                });
+            }
+        };
+    };
 
     function repeatDone() {
         return function(scope, element, attrs) {
@@ -15,23 +34,23 @@
         }
     }
 
-    function whenScrolled() {
-        // Runs during compile
+    function myiscroll() {
         return {
             scope: {
-                whenScrolled: "&",
-                scrollOffSet: "@"
+                onEnd: "&"
             },
-            restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
-            link: function($scope, iElm, iAttrs, controller) {
+            restrict: 'A',
+            link: function($scope, iElm, iAttrs) {
                 var raw = iElm[0];
-                var offset = parseInt($scope.scrollOffSet);
-                iElm.bind('scroll', function() {
-                    if (raw.scrollTop + raw.offsetHeight + offset >= raw.scrollHeight) {
-                        $scope.$eval($scope.whenScrolled);
-
-                    }
-
+                var myscroll = new IScroll(raw, {
+                    scrollX: true,
+                    mouseWheel: true,
+                    scrollbars: true,
+                    click: true
+                });
+                myscroll.on('scrollEnd', function() {
+                    $scope.$eval($scope.onEnd);
+                    myscroll.refresh();
                 });
             }
         };

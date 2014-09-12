@@ -9,31 +9,70 @@
     function Feed($http) {
         // Constructor Function
         function Feed() {
-            this.articles = [];
-            this.full_articles = [];
-            this.url = "http://localhost:3000/api/";
+            this.articles = []; // array of object in sidebar
+            this.full_articles = []; //array of articles in main area
+            this.prev_article = 0; // check not to call server again for same article
+            this.url = "/api/"; // url to fetch communticate
         }
 
         Feed.prototype = {
-
+            /**
+             * [initial_loading description]
+             * @param  {[int]} offset       [starting from slug index]
+             * @param  {[int]} count        [how many to fetch]
+             * @param  {[array]} arr_Articles [array of article index for rendering in one go in main area]
+             * @return {[null]}              [description]
+             */
             initial_loading: function(offset, count, arr_Articles) {
                 var scope = this;
+                scope.full_articles = [];
+                scope.prev_article = 0;
+                arr_Articles.forEach(function(el) {
+                    scope.load_Article(el);
+                });
+                scope.init_LoadSidebar(offset, count);
+            },
+
+            url_to_Article: function(slug) {
+                var scope = this;
+                scope.full_articles = [];
+                scope.prev_article = 0;
                 $http.defaults.useXDomain = true;
                 $http({
                     method: 'GET',
-                    url: scope.url + "slugs/" + offset + "/" + count
+                    url: scope.url + "article/url/" + slug
                 }).success(function(data, status) {
-                    for (var i = 0; i < data.length; i++) {
-                        var current = data[i];
-                        scope.articles.push(current);
-                    }
-                    arr_Articles.forEach(function(el) {
-                        scope.render_Article(scope.articles[el].index);
-                    });
+                    scope.full_articles.push(data);
+                    scope.init_LoadSidebar(0, 10);
+                }).error(function(error, status) {
+                    scope.initial_loading(0, 10, [0]);
+                    alert("Article Not Found!");
                 });
             },
 
-            //Above function wil be called while scrolling down by side bar after injecting it into controller.
+            init_LoadSidebar: function(offset, count) {
+                var scope = this;
+                if (!scope.articles.length) {
+                    $http.defaults.useXDomain = true;
+                    $http({
+                        method: 'GET',
+                        url: scope.url + "slugs/" + offset + "/" + count
+                    }).success(function(data, status) {
+                        for (var i = 0; i < data.length; i++) {
+                            var current = data[i];
+                            scope.articles.push(current);
+                        }
+                    }).error(function(error, status) {
+
+                    });
+                }
+            },
+
+            /**
+             * [load_more_feed description]
+             * @param  {Function} callback [sync execution]
+             * @return {[null]}            [null]
+             */
             load_more_feed: function(callback) {
                 var scope = this;
                 var offset = scope.articles[scope.articles.length - 1].index + 1;
@@ -78,6 +117,37 @@
 
                 return true;
             },
+
+            checkAndLoadArticle: function(id) {
+                var scope = this;
+                var len = scope.full_articles.length;
+                var found = false;
+                if (id) {
+                    scope.full_articles.forEach(function(ar) {
+                        if (ar.index === id + 1) found = true;
+                    })
+                }
+                if (!found) {
+                    if (scope.full_articles[len - 1]) {
+                        var index = scope.full_articles[len - 1].index;
+                        var next_index = index + 1;
+                        // console.log(scope.prev_article, next_index);
+                        if (scope.prev_article < next_index) {
+                            scope.prev_article = next_index;
+                            scope.render_Article(next_index);
+                        }
+
+
+                    }
+                }
+            },
+
+            loadSpecificArticle: function(index) {
+                var scope = this;
+                scope.full_articles = [];
+                scope.prev_article = 0;
+                scope.render_Article(index);
+            }
 
         };
         return Feed;
