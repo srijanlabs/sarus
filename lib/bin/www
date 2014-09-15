@@ -15,9 +15,10 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback() {
         debug('Successfully connected to MongoDB.');
-        setTimeout(function(){
+
+       // setTimeout(function(){
             feedModel._fetch_feeds_and_store();
-        },Config.TimeInterval*60*60*1000);
+       // },Config.TimeInterval*60*60*1000);
 
     });
 
