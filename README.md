@@ -42,15 +42,18 @@ For an API call, following urls are required:
 
 _These urls are defined in the RSS server script in the bundle. See below._
 
-## Installation
+## Installation & configurations
 Sarus uses the data that you expose it via an API or RSS feed.
->cd lib
 
 >npm install
 
->node bin/www
+>node lib/bin/www
 
-> open url localhost:3000
+###For Configurations
+
+>Open up file lib/config/config.js
+
+
 
 #### Using API
 Sarus can be used with custom API. This API should return content in JSON with minimum of following keys:
@@ -60,6 +63,7 @@ Sarus can be used with custom API. This API should return content in JSON with m
 > link
 
 > description
+
 
 Developed by
 [@ajsingh92](https://twitter.com/ajsingh92)
