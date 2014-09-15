@@ -8,7 +8,7 @@
             <main id="right_view" class="article-stream responsive" in-view-container ng-click="vm.body_click()">
                 <article ng-repeat="post in vm.feed.full_articles track by $index" repeat-done="vm.updateShareThis();" class="article" ng-init="url = vm.getSlug(post.url)" in-view="vm.changeUrl(post.title, url, $index, $inview, $inviewpart,post.index)" in-view-offset="50">
                     <h2 class="title article__title">
-                        <a href="/{{url}}">{{post.title}}</a>
+                        {{post.title}}
                     </h2>
                     <div class="post article__body">
                         <div ng-bind-html="post.description"></div>
