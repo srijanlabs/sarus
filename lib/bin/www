@@ -2,22 +2,27 @@
 var debug = require('debug')('sarus_v2'),
       mongoose = require('mongoose'),
       app = require('../app'),
-      feedModel = require('../models/feedModel');
+      feedModel = require('../models/feedModel'),
+      Config = require('../config/config');
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', Config.Port);
 /**
  * Mongoose database connection
  */
 
-mongoose.connect('mongodb://localhost:27017/sarus_dev');
+mongoose.connect(Config.DBUrl);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback() {
-        console.log('Successfully connected to MongoDB.');
-        //feedModel._fetch_feeds_and_store();
+        debug('Successfully connected to MongoDB.');
+
+       // setTimeout(function(){
+            feedModel._fetch_feeds_and_store();
+       // },Config.TimeInterval*60*60*1000);
+
     });
 
 
 var server = app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + server.address().port);
+  debug('Express server listening on port ' + server.address().port);
 });
