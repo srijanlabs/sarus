@@ -202,7 +202,7 @@ end header
 }
 .share_icon a {
     float: left;
-    background: url("images/icon_shares.png") 0 0 no-repeat;
+    background: url("../../images/icon_shares.png") 0 0 no-repeat;
     height: 32px;
     width: 32px;
     text-indent: -9999px;
