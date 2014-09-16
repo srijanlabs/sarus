@@ -1,10 +1,10 @@
-# Sarus_v2
-Developer : [Ajay Singh](http://about.me/meajaysingh)
-### Check out the [Live Demo](http://)
+# Sarus
+
+### Check out the [Live Demo](http://sarus-dev.srijanlabs.com)
 
 Sarus is a minimalistic front-end framework for when you need a SEO-friendly continuous scroll across a lot of content. Sarus implements a UX similar to [Quartz](http://qz.com/), and allows for bringing in new content seamlessly on scroll instead of tap/click. Couple that with context-based URL switching, and you got yourself a SEO winner! Sarus is perfect for your blog and any scenario where a continuous flow of content is needed.
 
-Made with love by [@adityaraj](https://twitter.com/adityaraj),[@ajsingh92](https://twitter.com/ajsingh92), [@fotuzlab](https://twitter.com/fotuzlab) and [@ray1claw](https://twitter.com/ray1claw)
+Made with love by [@ajsingh92](https://twitter.com/ajsingh92), [@adityaraj](https://twitter.com/adityaraj), [@fotuzlab](https://twitter.com/fotuzlab) and [@ray1claw](https://twitter.com/ray1claw)
 
 ## Features
 
@@ -19,12 +19,13 @@ Along infinite scroll, Sarus maintains URL paths of posts for the browser. This 
 ### Infinitely customizable
 Being based on AngularJS, Sarus allows any level of customization in design and functionality. It is as easy to customize as it is to set up.
 ### Responsive
-Sarus uses the Sass version of Zurb Foundation, and comes responsive out of the box. You can easily either extend it or replace the whole styling component to make it look and feel like you want.
+Sarus uses twitter bootstrap, and comes responsive out of the box. You can easily either extend it or replace the whole styling component to make it look and feel like you want.
 ### Maintains browser history
 It maintains users' browser history using HTML5 History API. Bookmark and find your visited articles with ease.
 ### Sharethis
 Sharethis comes bundled with it to allow easy sharing across social media.
-
+####Disqus
+We are using disqus for discussions on the articles, that gives freedom to the users to put there reviews as well as read others.
 ## Requirements
 Minimum requirement is following tags in feed XML:
 
@@ -68,6 +69,15 @@ And Sarus will  be there.
 Sarus will be running with default setup. But you can configure it by opening up configuration file located in lib/config/config.js
 
 By using the config file you can tell sarus to where to fetch the feeds, on which port it should be listening, and name of the mongodb database to use.
+
+##Screenshot
+
+![Animated png](screenshots/sarus-1.png "Animation that shows auto completion")
+
+##Todo
+
+> Gulp build Automations
+> Code review based on [John Papa's Angular Style Guide](https://github.com/johnpapa/angularjs-styleguide/blob/master/README.md).
 
 
 Developed by
