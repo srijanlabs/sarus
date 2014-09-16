@@ -43,26 +43,31 @@ For an API call, following urls are required:
 _These urls are defined in the RSS server script in the bundle. See below._
 
 ## Installation & configurations
-Sarus uses the data that you expose it via an API or RSS feed.
+Sarus installation is easy to do. Just follow up with me and in no time sarus will be running on your machine serving a better look and feel for ugly RSS feeds.
+
+First clone the repository to your local machine, open up terminal, reach out into the sarus repo and run
+the following command.
 
 >npm install
 
->node lib/bin/www
+This will install all the dependencies require for sarus to run.
+[In case of error, either you don't have node package manager installed on your machine or you need to run with superuser as sudo npm install]
+
+After installation of dependencies you can directly run the server as
+
+>npm start
+
+open up browser with
+
+>http://localhost:26192
+
+And Sarus will  be there.
 
 ###For Configurations
 
->Open up file lib/config/config.js
+Sarus will be running with default setup. But you can configure it by opening up configuration file located in lib/config/config.js
 
-
-
-#### Using API
-Sarus can be used with custom API. This API should return content in JSON with minimum of following keys:
-
-> title
-
-> link
-
-> description
+By using the config file you can tell sarus to where to fetch the feeds, on which port it should be listening, and name of the mongodb database to use.
 
 
 Developed by
