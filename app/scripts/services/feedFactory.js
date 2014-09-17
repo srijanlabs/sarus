@@ -75,18 +75,25 @@
              */
             load_more_feed: function(callback) {
                 var scope = this;
+                var returnCallback = callback;
                 var offset = scope.articles[scope.articles.length - 1].index + 1;
                 $http.defaults.useXDomain = true;
                 $http({
                     method: 'GET',
                     url: scope.url + "slugs/" + offset + "/10"
                 }).success(function(data, status) {
-                    for (var i = 0; i < data.length; i++) {
-                        var current = data[i];
-                        scope.articles.push(current);
+                    var l = data.length;
 
+                    function next(val) {
+                        if (val < l) {
+                            var current = data[val];
+                             scope.articles.push(current);
+                             next(++val);
+                        }
+                        else
+                            returnCallback(true);
                     }
-                    callback(true);
+                    next(0);
                 });
 
             },
