@@ -34,6 +34,7 @@
         }
     }
     myiscroll.inject = ['$timeout'];
+
     function myiscroll($timeout) {
         return {
             scope: {
@@ -52,11 +53,12 @@
                     if ($scope.onEnd) {
                         myscroll.on('scrollEnd', function() {
                             $scope.$eval($scope.onEnd);
-                            myscroll.refresh();
+                            $timeout(function() {
+                                myscroll.refresh();
+                            }, 700);
                         });
                     }
-                }, 1000);
-
+                }, 100);
 
             }
         };
