@@ -1,4 +1,4 @@
-# Sarus
+# Sarus <sup><small>Beta</small></sup>
 
 ### Check out the [Live Demo](http://sarus-dev.srijanlabs.com)
 
@@ -43,6 +43,14 @@ For an API call, following urls are required:
 
 _These urls are defined in the RSS server script in the bundle. See below._
 
+## Technology Stack
+
+<big>Express</big> - We are using express framework over node-js for our backend application with ejs templating engine.
+
+<big>MongoDB</big> - For database, our choice is mongodb simple and stable for feeds.
+
+<big>Angular-js</big> - Great things, get ignored because of poor UX-UI, Sarus taking advantage of Angular-js javascript MV* framework to provide great UX to its users.
+
 ## Installation & configurations
 Sarus installation is easy to do. Just follow up with me and in no time sarus will be running on your machine serving a better look and feel for ugly RSS feeds.
 
@@ -76,7 +84,8 @@ By using the config file you can tell sarus to where to fetch the feeds, on whic
 
 ##Todo
 
-> Gulp build Automations
+> Gulp build Automations.
+
 > Code review based on [John Papa's Angular Style Guide](https://github.com/johnpapa/angularjs-styleguide/blob/master/README.md).
 
 
