@@ -13,6 +13,7 @@
             this.full_articles = []; //array of articles in main area
             this.prev_article = 0; // check not to call server again for same article
             this.url = "/api/"; // url to fetch communticate
+            this.err = "";
         }
 
         Feed.prototype = {
@@ -33,23 +34,6 @@
                 scope.init_LoadSidebar(offset, count);
             },
 
-            url_to_Article: function(slug) {
-                var scope = this;
-                scope.full_articles = [];
-                scope.prev_article = 0;
-                $http.defaults.useXDomain = true;
-                $http({
-                    method: 'GET',
-                    url: scope.url + "article/url/" + slug
-                }).success(function(data, status) {
-                    scope.full_articles.push(data);
-                    scope.init_LoadSidebar(0, 10);
-                }).error(function(error, status) {
-                    scope.initial_loading(0, 10, [0]);
-                    alert("Article Not Found!");
-                });
-            },
-
             init_LoadSidebar: function(offset, count) {
                 var scope = this;
                 if (!scope.articles.length) {
@@ -68,6 +52,25 @@
                 }
             },
 
+            url_to_Article: function(slug) {
+                var scope = this;
+                scope.full_articles = [];
+                scope.prev_article = 0;
+                $http.defaults.useXDomain = true;
+                $http({
+                    method: 'GET',
+                    url: scope.url + "article/url/" + slug
+                }).success(function(data, status) {
+                    scope.full_articles.push(data);
+                    scope.init_LoadSidebar(0, 10);
+                }).error(function(error, status) {
+                    scope.initial_loading(0, 10, [0]);
+                    err = "Article Not Found!";
+                });
+            },
+
+
+
             /**
              * [load_more_feed description]
              * @param  {Function} callback [sync execution]
@@ -75,8 +78,11 @@
              */
             load_more_feed: function(callback) {
                 var scope = this;
+
                 var returnCallback = callback;
-                var offset = scope.articles[scope.articles.length - 1].index + 1;
+                var offset = 0;
+                if (scope.articles.length !== 0)
+                    offset = scope.articles[scope.articles.length - 1].index + 1;
                 $http.defaults.useXDomain = true;
                 $http({
                     method: 'GET',
@@ -87,10 +93,9 @@
                     function next(val) {
                         if (val < l) {
                             var current = data[val];
-                             scope.articles.push(current);
-                             next(++val);
-                        }
-                        else
+                            scope.articles.push(current);
+                            next(++val);
+                        } else
                             returnCallback(true);
                     }
                     next(0);
