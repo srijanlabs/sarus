@@ -9,7 +9,7 @@ Made with love by [@ajsingh92](https://twitter.com/ajsingh92), [@adityaraj](http
 ## Features
 
 ### Fast
-Sarus loads data incrementally as you scroll, So the speed to load any post is equal to loading the first post.
+Sarus loads data incrementally as you scroll.
 ### Purely front-end
 Sarus is completely independent of the way data is stored in the back-end. It uses an API or RSS feeds to fetch the posts, thus providing complete abstraction between front-end and back-end. This also makes it compatible with apps that use mobile-native/content management/proprietary solutions to store data.
 ### Easy to set up
@@ -52,8 +52,6 @@ _These URLs are defined in the RSS server script in the bundle. See below._
 <big>Angular.js</big> - Sarus takes advantage of Angular.js JavaScript MV* framework to provide a great UX to the users.
 
 ## Installation & configurations
-Sarus installation is easy. Just follow up with me and in no time sarus will be running on your machine, even serving a better look and feel for RSS feeds that don't look pretty.
-
 Clone the repository to your local machine, open up terminal, reach out into the Sarus repo and run
 the following command.
 
