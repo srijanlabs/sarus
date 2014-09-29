@@ -1,6 +1,6 @@
 # Sarus <sup><small>Beta</small></sup>
 
-### Check out the [Live Demo](http://sarus-dev.srijanlabs.com)
+### Check out the [Live Demo](http://www.theweeklybyte.com)
 
 Sarus is a minimalistic front-end framework that lets media sites and blogs create an SEO-friendly continuous scroll of the content they have. Sarus implements a UX similar to [Quartz](http://qz.com/), and allows for bringing in new content seamlessly on scroll instead of tap/click. Couple that with context-based URL switching, and you got yourself a SEO winner! Sarus is perfect for your blog and any scenario where a continuous flow of content is needed.
 
