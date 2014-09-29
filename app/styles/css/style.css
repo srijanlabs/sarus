@@ -151,11 +151,11 @@ end header
 .sidebar .article-list-item a {
     color: #666666;
     font-weight: 600;
-    background-color: #fff;
+    background-color: none;
 }
 .sidebar .article-list-item a.is-active {
     color: #66cccc;
-    background-color: #ffffff;
+    background-color: none;
 }
 /**
  * Article-stream
