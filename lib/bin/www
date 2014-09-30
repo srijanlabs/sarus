@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+
+'use strict';
 var debug = require('debug')('sarus_v2'),
       mongoose = require('mongoose'),
       app = require('../app'),
