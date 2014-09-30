@@ -272,7 +272,7 @@
       if (timer != null) {
         clearTimeout(timer);
       }
-      return timer = setTimeout(f, t != null ? t : 100);
+      return timer = setTimeout(f, t != null ? t : 10);
     };
   };
 

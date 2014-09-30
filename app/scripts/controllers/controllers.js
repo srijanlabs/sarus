@@ -1,6 +1,5 @@
-'use strict';
 (function() {
-    var redirectedFrom = true;
+    'use strict';
     /* Controllers */
     angular.module('sarusApp.controllers', [])
         .controller('PostsController', PostsController);
@@ -9,6 +8,7 @@
     PostsController.$inject = ['$location', '$routeParams', '$timeout', 'Feed', '$window'];
 
     function PostsController($location, $routeParams, $timeout, Feed, $window) {
+        var redirectedFrom = true;
         var vm = this;
         vm.feed = new Feed();
         vm.sidebar_open = (window.innerWidth > 1000) ? true : false;
@@ -22,7 +22,7 @@
         vm.gaUpdate = gaUpdate;
         vm.load_disqus = load_disqus;
         vm.disqus_sidebar = false;
-        vm.body_click = body_click
+        vm.body_click = body_click;
         // /////////////////////////////
 
         var location_current = $location.path();
@@ -38,49 +38,49 @@
         //////////////////////////
 
         function loadMoreSlugs() {
-            vm.feed.load_more_feed(function(done) {
+            vm.feed.load_more_feed(function() {
 
             });
-        };
+        }
 
 
         // navigation from sidebar
         function navPost(index) {
             vm.sidebar_open = false;
             vm.feed.loadSpecificArticle(index);
-        };
+        }
 
         function loadNextArticle(inview) {
             // The event captures via angular inview module must be of a condition where
             // the loading element has come into display and not while going out of view.
-            if (inview == false) {
+            if (inview === false) {
                 return false;
             }
             vm.feed.checkAndLoadArticle();
 
-        };
+        }
         vm.body_option_sidebar = false;
 
         function body_click() {
             vm.sidebar_open = false;
-            if (vm.body_option_sidebar){
-                vm.body_option_sidebar=false;
+            if (vm.body_option_sidebar) {
+                vm.body_option_sidebar = false;
                 vm.disqus_sidebar = false;
             }
-        };
+        }
 
         function mapUrl(url_part) {
             $location.path("/" + url_part);
             $window.document.title = url_part;
-        };
+        }
         // This function allows to change current url of the browser.
         // This is required to show correct url to the user based on the post in view.
-        function changeUrl(title, slug, index, inview, inviewpart, articleIndex) {
+        function changeUrl(title, slug, index, inview, inviewpart) {
             if (inview && inviewpart === "top") {
                 mapUrl(slug);
                 gaUpdate(title, slug);
             }
-        };
+        }
 
         function load_disqus(disqus_identifier, disqus_title, disqus_url) {
             vm.disqus_sidebar = true;
@@ -114,7 +114,7 @@
                     }
                 });
             }
-        };
+        }
 
 
 
@@ -128,7 +128,7 @@
                     stButtons.locateElements();
                 }
             }, 0);
-        };
+        }
         // This function returns slug value from a url. Considering that the last part
         // of the url is slug from something like : http://www.foo.bar/a/b/c-this-is-slug
         // it will return: c-this-is-slug.
@@ -142,16 +142,16 @@
             return str.split("/").filter(function(n) {
                 return n; // What is this supposed to do?
             }).reverse()[0];
-        };
+        }
 
         // This function is used from ui directive to assign active class to the currently
         // visible post in the sidebar.
         function slugClass(slug) {
             var cls = {
-                'is-active': slug == $location.path().replace("/", "")
+                'is-active': slug === $location.path().replace('/', '')
             };
             return cls;
-        };
+        }
 
         // Index URL on Google.
         function gaUpdate(title, slug) {
@@ -160,28 +160,28 @@
                     'page': slug,
                     'title': title
                 });
-        };
+        }
 
-    };
+    }
 
     // The function below allows to filter an array of hashes
     // like calling:  takeStartingAt([{slug: 'a'}, {slug: 'b'}, {slug: 'c'}, {slug: 'd'}], 'b')
     // would return [{slug: 'b'}, {slug: 'c'}, {slug: 'd'}]
     // More info at: http://goo.gl/8dREOz
-    var takeStartingAt = function(data, start) {
-        var result = [];
-        var skip = true;
-        for (var i = 0; i < data.length; i++) {
-            if (data[i].slug === start) {
-                skip = false;
-            }
-            if (skip) {
-                continue;
-            }
-            result.push(data[i]);
-        }
-        return result;
-    };
+    // var takeStartingAt = function(data, start) {
+    //     var result = [];
+    //     var skip = true;
+    //     for (var i = 0; i < data.length; i++) {
+    //         if (data[i].slug === start) {
+    //             skip = false;
+    //         }
+    //         if (skip) {
+    //             continue;
+    //         }
+    //         result.push(data[i]);
+    //     }
+    //     return result;
+    // };
 
 
 }());
