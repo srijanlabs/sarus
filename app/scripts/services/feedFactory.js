@@ -1,12 +1,12 @@
-'use strict';
-/* factory */
 (function() {
-
+    'use strict';
+    /* factory */
 
     angular.module('sarusApp.factories', [])
-        .factory('Feed', Feed);
+        .factory('Feed', FeedFactory);
+    FeedFactory.$inject = ['$http'];
 
-    function Feed($http) {
+    function FeedFactory($http) {
         // Constructor Function
         function Feed() {
             this.articles = []; // array of object in sidebar
@@ -47,7 +47,7 @@
                             scope.articles.push(current);
                         }
                     }).error(function(error, status) {
-
+                        console.log(error);
                     });
                 }
             },
@@ -65,7 +65,7 @@
                     scope.init_LoadSidebar(0, 10);
                 }).error(function(error, status) {
                     scope.initial_loading(0, 10, [0]);
-                    err = "Article Not Found!";
+                    console.log("Article Not Found!", error);
                 });
             },
 
@@ -81,8 +81,9 @@
 
                 var returnCallback = callback;
                 var offset = 0;
-                if (scope.articles.length !== 0)
+                if (scope.articles.length !== 0) {
                     offset = scope.articles[scope.articles.length - 1].index + 1;
+                }
                 $http.defaults.useXDomain = true;
                 $http({
                     method: 'GET',
@@ -95,8 +96,9 @@
                             var current = data[val];
                             scope.articles.push(current);
                             next(++val);
-                        } else
+                        } else {
                             returnCallback(true);
+                        }
                     }
                     next(0);
                 });
@@ -121,11 +123,13 @@
             render_Article: function(index) {
                 var scope = this;
                 // TODO ::: Modify logic here
-                if (!scope.articles[index]) scope.load_more_feed(function(done) {
+                if (!scope.articles[index]) {
+                    scope.load_more_feed(function() {
+                        scope.load_Article(index);
+                    });
+                } else {
                     scope.load_Article(index);
-                });
-                else
-                    scope.load_Article(index);
+                }
 
                 return true;
             },
@@ -136,8 +140,10 @@
                 var found = false;
                 if (id) {
                     scope.full_articles.forEach(function(ar) {
-                        if (ar.index === id + 1) found = true;
-                    })
+                        if (ar.index === (id + 1)) {
+                            found = true;
+                        }
+                    });
                 }
                 if (!found) {
                     if (scope.full_articles[len - 1]) {
