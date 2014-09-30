@@ -82,12 +82,13 @@ By using the config file you can tell Sarus to where to fetch the feeds, on whic
 
 ##Todo
 
-> Gulp build Automations.
+ <ul>
+ <li><del> Code Quality By [JSHint](https://github.com/jshint/jshint/).</del> </li>
+ <li >[Gulp](https://github.com/gulpjs/gulp/) build Automations. </li>
+ <li> Code review based on [John Papa's Angular Style Guide](https://github.com/johnpapa/angularjs-styleguide/blob/master/README.md).</li></ul>
 
-> Code review based on [John Papa's Angular Style Guide](https://github.com/johnpapa/angularjs-styleguide/blob/master/README.md).
 
-
-Developed by
+####Developed by
 [@ajsingh92](https://twitter.com/ajsingh92)
 [@adityaraj](https://twitter.com/adityaraj)
 [@fotuzlab](https://twitter.com/fotuzlab)
