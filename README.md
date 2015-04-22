@@ -38,7 +38,7 @@ Sarus module can be activated and deactivated simply by modifying module.js file
            Twitter
            Linkedin
            
- ###Logo,background color of body and header,links color and links active color can be Modified by modifying module.js file in sarusClient folder without actually coding 
+ ### Logo,background color of body and header,links color and links active color can be Modified by modifying module.js file in sarusClient folder without actually coding 
 ## Requirements
 The minimum requirement is to use the following tags in the feed XML:
  
