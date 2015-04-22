@@ -67,7 +67,8 @@ _These URLs are defined in the RSS server script in the bundle. See below._
 <big>Angular.js</big> - Sarus takes advantage of Angular.js JavaScript MV* framework to provide a great UX to the users.
 
 ## Installation & configurations
-Clone the repository to your local machine, open up terminal, reach out into the Sarus repo and run
+Clone the repository to your local machine, open up terminal, reach out into the Sarus/sarusClient/app and 
+Sarus/sarusServer repo and run
 the following command.
 
 >npm install
@@ -80,10 +81,11 @@ After the installation of dependencies, you can directly run the server as
 >npm start
 
 Open up browser with
+>http://localhost:8000
 
+Server will run on 
 >http://localhost:26192
 
-And you'll find Sarus there.
 
 ###For Configuration
 
