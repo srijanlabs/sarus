@@ -36,9 +36,9 @@ Sarus module can be activated and deactivated simply by modifying [module.js](ht
                   Facebook
                   Twitter
                   Linkedin
-####Modification without coding
-         Logo,background color of body,header and links color can be 
-         Modified by modifying [module.js](https://github.com/srijanlabs/sarus/blob/master/sarusClient/app/module.js) file in
+### Modification without coding
+   Logo,background color of body,header and links color can be 
+            Modified by modifying [module.js](https://github.com/srijanlabs/sarus/blob/master/sarusClient/app/module.js) file in
          sarusClient folder without actually coding 
 
 ## Requirements
