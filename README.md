@@ -8,8 +8,6 @@ Made with love by [@ajsingh92](https://twitter.com/ajsingh92), [@adityaraj](http
 
 ## Features
 
-### Sperate Client and Server side code
-Sarus is modular hence can be used as SAAS.
 ### Fast
 Sarus loads data incrementally as you scroll.
 ### Purely front-end
@@ -28,21 +26,8 @@ Sarus maintains the browser history of bowsers using HTML5 History API.This lets
 Sharethis comes bundled with Sarus to allow easy sharing across social media.
 ####Disqus
 Sarus uses Disqus for discussions on the articles, enabling users to put their views as well as read those of others.
-### Modular On/Off
-Sarus module can be activated and deactivated simply by modifying module.js file in sarusClient folder
-            Advertisement(Google Advertisement)
-            Discussion(Disqus)
-            socialMedia(Sharethis)
-                  Facebook
-                  Twitter
-                  Linkedin
-####Modification without coding
-         Logo,background color of body,header and links color can be 
-         Modified by modifying module.js file in
-         sarusClient folder without actually coding 
 ## Requirements
 The minimum requirement is to use the following tags in the feed XML:
- 
 
 `<title></title>`
 

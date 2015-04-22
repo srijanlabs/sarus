@@ -29,7 +29,9 @@
         vm.headerBackground = addModule.backgroundColour.Header;
         vm.menuCollapsed = true;
         vm.menuCollapse = false;
-        console.log(addModule.logoImage.css)
+        vm.addVisble = addVisble;
+        vm.visiblePart = 0;
+        // console.log(addModule.logoImage.css)
         vm.loadNextArticle = loadNextArticle;
         vm.changeUrl = changeUrl;
         vm.getSlug = getSlug;
@@ -41,11 +43,11 @@
         vm.body_click = body_click;
         vm.sidebar_open = false;
         vm.selectedLink = 0;
-        console.log($window, "$window")
+        // console.log($window, "$window")
         vm.toggleMenuIcon = toggleMenuIcon;
-        console.log("scope", $scope.$apply)
+        // console.log("scope", $scope.$apply)
         $(window).resize(function() {
-            console.log("changed", window.innerWidth)
+            // console.log("changed", window.innerWidth)
             $scope.$apply(function() {
                 //do something to update current scope based on the new innerWidth and let angular update the view.
                 // console.log("changed")
@@ -68,7 +70,10 @@
 
         //////////////////////////
 
-
+        function addVisble(index) {
+            console.log(index);
+            vm.visiblePart = index;
+        }
 
         function loadMoreSlugs() {
             vm.feed.load_more_feed(function() {
@@ -115,6 +120,7 @@
             // This function allows to change current url of the browser.
             // This is required to show correct url to the user based on the post in view.
         function changeUrl(title, slug, index, inview, inviewpart) {
+            // console.log(title, "fff", slug, "fff", index, "fff", inview, "fff", inviewpart)
             if (inview && inviewpart === "top") {
                 mapUrl(slug);
                 gaUpdate(title, slug);
@@ -176,13 +182,15 @@
             // Modify this function to return correct slug value from your urls if your urls
             // are structured differently.
         function getSlug(str) {
+            // console.log(str)
             // if (angular.isUndefined(str)) {
             //     return "";
             // }
             // return str.split("/").filter(function(n) {
             //     return n; // What is this supposed to do?
             // }).reverse()[0];
-            return str.split('/')[2];
+            // console.log(str.split('/')[2].split('">')[0])
+            return str.split('/')[2].split('">')[0];
         }
 
         // This function is used from ui directive to assign active class to the currently

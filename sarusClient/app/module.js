@@ -1,10 +1,10 @@
 var addModule = {
     "sarusAppadvertisement": true,
     "logoImage": {
-        "scr": "http://1.bp.blogspot.com/-unf1wRW4SEs/VLTTbPZrwXI/AAAAAAAACrU/G0qJREyBQyE/s1600/ICC-Cricket-World-Cup-2015.gif",
+        "scr": "http://www.srijan.net/sites/default/files/pictures/srijan_logo_250.jpg",
         "css": {
-            "height": "30px",
-            "width": "98px"
+            "height": "25px",
+            "width": "45px"
         },
     },
     "backgroundColour": {

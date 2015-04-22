@@ -19,11 +19,16 @@
                     <span class="share_this">
                             <div ng-include="'views/others/_sharethis.html'"></div>
                         </span>
-                    <div class="google-medium-ad" ng-if="vm.mediumScreen">
-                        <div google-adsense small="false"></div>
-                    </div>
-                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <div google-ads></div>
+                    <!-- <div in-view=vm.addVisble($index)> -->
+                        <!-- <div ng-if="vm.visiblePart==$index"> -->
+                            <!-- {{vm.visiblePart}}{{$index}} -->
+                            <div class="google-medium-ad" ng-if="vm.mediumScreen">
+                                <div google-adsense small="false"></div>
+                            </div>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <div google-ads></div>
+                        <!-- </div> -->
+                    <!-- </div> -->
 
 
                 </article>
