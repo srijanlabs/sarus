@@ -29,7 +29,7 @@ Sharethis comes bundled with Sarus to allow easy sharing across social media.
 ####Disqus
 Sarus uses Disqus for discussions on the articles, enabling users to put their views as well as read those of others.
 ### Modular On/Off
-Sarus module can be activated and deactivated simply by modifying module.js file in sarusClient folder
+Sarus module can be activated and deactivated simply by modifying [module.js](https://github.com/srijanlabs/sarus/blob/master/sarusClient/app/module.js) file in sarusClient folder
             Advertisement(Google Advertisement)
             Discussion(Disqus)
             socialMedia(Sharethis)
@@ -38,7 +38,7 @@ Sarus module can be activated and deactivated simply by modifying module.js file
                   Linkedin
 ####Modification without coding
          Logo,background color of body,header and links color can be 
-         Modified by modifying module.js file in
+         Modified by modifying [module.js](https://github.com/srijanlabs/sarus/blob/master/sarusClient/app/module.js) file in
          sarusClient folder without actually coding 
 
 ## Requirements
