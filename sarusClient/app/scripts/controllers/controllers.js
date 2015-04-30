@@ -71,7 +71,7 @@
         //////////////////////////
 
         function addVisble(index) {
-            console.log(index);
+            // console.log(index);
             vm.visiblePart = index;
         }
 
