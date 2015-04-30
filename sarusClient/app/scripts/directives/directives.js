@@ -73,6 +73,8 @@
             }
         };
     }
+
+    // 
     angular.module('sarusApp.advertisement', [])
         .directive('googleAds', googleAds)
         .directive('googleAdsense', googleAdsense);
