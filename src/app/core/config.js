@@ -2,4 +2,4 @@
   module.config(function(){
 
   });
-})(angular.module('app.core',[]));
+})(angular.module('app.core'));

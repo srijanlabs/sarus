@@ -1,3 +1,3 @@
 (function(module) {
   module.constant('name', '');
-})(angular.module('app.constants'));
+})(angular.module('app.core'));
