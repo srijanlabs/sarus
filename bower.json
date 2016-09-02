@@ -1,0 +1,23 @@
+{
+  "name": "sarus",
+  "description": "SEO friendly continuous-scroll framework for online publishing",
+  "main": "index.js",
+  "authors": [
+    "srijan technologies"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "infinite",
+    "scroll",
+    "seo",
+    "friendly"
+  ],
+  "homepage": "https://github.com/Josephdias92/sarus",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
