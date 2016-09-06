@@ -1,4 +1,4 @@
-# Sarus <sup><small>Beta</small></sup>
+l# Sarus <sup><small>Beta</small></sup>
 
 ### Check out the [Live Demo](http://www.theweeklybyte.com)
 
@@ -37,9 +37,9 @@ Sarus module can be activated and deactivated simply by modifying [module.js](ht
                   Twitter
                   Linkedin
 ### Modification without coding
-   Logo,background color of body,header and links color can be 
+   Logo,background color of body,header and links color can be
             Modified by modifying [module.js](https://github.com/srijanlabs/sarus/blob/master/sarusClient/app/module.js) file in
-         sarusClient folder without actually coding 
+         sarusClient folder without actually coding
 
 ## Requirements
 The minimum requirement is to use the following tags in the feed XML:
@@ -67,7 +67,7 @@ _These URLs are defined in the RSS server script in the bundle. See below._
 <big>Angular.js</big> - Sarus takes advantage of Angular.js JavaScript MV* framework to provide a great UX to the users.
 
 ## Installation & configurations
-Clone the repository to your local machine, open up terminal, reach out into the Sarus/sarusClient/app and 
+Clone the repository to your local machine, open up terminal, reach out into the Sarus/sarusClient/app and
 Sarus/sarusServer repo and run
 the following command.
 
@@ -83,7 +83,7 @@ After the installation of dependencies, you can directly run the server as
 Open up browser with
 >http://localhost:8000
 
-Server will run on 
+Server will run on
 >http://localhost:26192
 
 
