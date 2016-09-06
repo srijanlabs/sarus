@@ -1,7 +1,12 @@
 (function(module) {
-  module.service('Listing',function($http){
-    this.get=function(){
-      return $http.get('test.json')
+  module.service('Listing', function($http) {
+    this.get = function(cb) {
+      return $http.get('app/service/test.json').success(function(data) {
+        if (cb) {
+          cb(data)
+        }
+        return data;
+      })
     }
   })
-})(angular.module('app.service'));
+})(angular.module('sarusApp'));

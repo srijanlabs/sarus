@@ -6,7 +6,6 @@
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
     <!-- bower:css -->
-    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -21,13 +20,19 @@
     <ui-view></ui-view>
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
-    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
     <!-- inject:js -->
-    <!-- js files will be automatically insert here -->
+    <script src="app/app.module.js"></script>
+    <script src="app/service/test.service.js"></script>
+    <script src="app/core/constant.js"></script>
+    <script src="app/core/config.js"></script>
+    <script src="app/controller/post.router.js"></script>
+    <script src="app/controller/post.controller.js"></script>
     <!-- endinject -->
 
     <!-- inject:partials -->

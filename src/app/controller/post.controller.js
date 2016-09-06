@@ -1,5 +1,8 @@
 (function(module) {
-  module.controller('testController',function(Listing){
-    console.log(Listing)
+  module.controller('PostController', function(Listing) {
+    var vm = this;
+    Listing.get(function(d) {
+      vm.list = d;
+    })
   })
-})(angular.module('app.controller'));
+})(angular.module('sarusApp'));
