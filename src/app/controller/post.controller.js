@@ -4,5 +4,9 @@
     Listing.get(function(d) {
       vm.list = d;
     })
+    vm.listing = {
+      header: 'some header',
+      body: 'some body'
+    }
   })
 })(angular.module('sarusApp'));
