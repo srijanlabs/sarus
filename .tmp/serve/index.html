@@ -7,7 +7,6 @@
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -24,12 +23,9 @@
     <ui-view></ui-view>
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="../bower_components/angular-animate/angular-animate.js"></script>
-    <script src="../bower_components/angular-aria/angular-aria.js"></script>
-    <script src="../bower_components/angular-messages/angular-messages.js"></script>
-    <script src="../bower_components/angular-material/angular-material.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -41,10 +37,10 @@
     <script src="app/directive/sarusWrapper.directive.js"></script>
     <script src="app/directive/infiniteScroll.directive.js"></script>
     <script src="app/directive/ads.directive.js"></script>
-    <script src="app/controller/get.router.js"></script>
-    <script src="app/controller/get.controller.js"></script>
     <script src="app/core/constant.js"></script>
     <script src="app/core/config.js"></script>
+    <script src="app/controller/get.router.js"></script>
+    <script src="app/controller/get.controller.js"></script>
     <!-- endinject -->
 
     <!-- inject:partials -->

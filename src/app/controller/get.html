@@ -1,9 +1,8 @@
 <style>
     .chat {
-      height:900px;
     }
     .chat .item {
-      min-height: 900px;
+      min-height:700px;
       list-style-type: none;
       border: 0 dotted #ddd;
       border-bottom-width: 1px;
@@ -12,12 +11,13 @@
     }
 
 </style>
-<div class="chat" infinite-scroll="vm.loadMore(vm.pageNumber, vm.numberOfRecordsPerPage)">
-    <div>
-        <div class="item" ng-repeat="item in vm.listing track by $index">
-          <sarus-item update-url="hello-{{$index}}" sarus-template="app/controller/get-view.tpl.html"
-            item="item" >
-          </sarus-item>
-        </div>
+<div class="chat" infinite-scroll-distance='1' infinite-scroll-disabled='vm.sarus.busy'
+  infinite-scroll="vm.sarus.nextPage(vm.nids[vm.sarus.index].nid)">
+  <div>
+    <div class="item" update-url="{{$index}}" ng-repeat="item in vm.sarus.items track by $index">
+      <sarus-item sarus-template="app/controller/get-view.tpl.html"
+        item="item" >
+      </sarus-item>
     </div>
+  </div>
 </div>

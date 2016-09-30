@@ -1,10 +1,10 @@
 angular.module('sarusApp')
-  .controller("GetController", function(Listing, $sce, common) {
+  .controller("GetController", function(SarusFetch, $sce, common) {
     var vm = this;
     vm.trustAsHtml = $sce.trustAsHtml;
     vm.pageNumber = 1;
     vm.numberOfRecordsPerPage = common.numberOfRecordsPerPage;
-    var nids = [{
+    vm.nids = [{
       "nid": "21700"
     }, {
       "nid": "21699"
@@ -43,13 +43,5 @@ angular.module('sarusApp')
     }, {
       "nid": "21678"
     }];
-    vm.listing = [];
-    vm.loadMore = function(page, count) {
-      var nid = nids[page];
-      Listing.get(nid, function(data) {
-        vm.listing.push(data[0]);
-      });
-      vm.pageNumber++;
-    };
-    vm.loadMore(vm.pageNumber, vm.numberOfRecordsPerPage);
+    vm.sarus = new SarusFetch();
   });

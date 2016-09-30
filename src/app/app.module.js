@@ -1,6 +1,5 @@
 (function(angular) {
   angular.module('sarusApp', [
-    'ui.router',
-    'ngMaterial'
+    'ui.router'
   ]);
 })(angular)
