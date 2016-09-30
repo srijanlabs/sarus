@@ -1,63 +1,23 @@
 <style>
-li {
-  display: block;
-  list-style-type: none;
-  margin-bottom: 1em;
-}
+    .chat {
+      height:900px;
+    }
+    .chat .item {
+      min-height: 900px;
+      list-style-type: none;
+      border: 0 dotted #ddd;
+      border-bottom-width: 1px;
+      width: 80%;
+      margin: auto;
+    }
 
-ul {
-  height: 250px;
-  background: #44E394;
-  color: #fff;
-  overflow: auto;
-  width: 550px;
-  border-radius: 5px;
-  margin: 0 auto;
-  padding: 0.5em;
-  border: 1px dashed #11BD6D;
-}
-ul::-webkit-scrollbar {
-  width: 8px;
-  background-color: transparent;
-}
-ul::-webkit-scrollbar-thumb {
-  background-color: #b0fccd;
-  border-radius: 10px;
-}
-ul::-moz-scrollbar {
-  width: 8px;
-  background-color: transparent;
-}
-ul::-moz-scrollbar-thumb {
-  background-color: #b0fccd;
-  border-radius: 10px;
-}
-ul::-ms-scrollbar {
-  width: 8px;
-  background-color: transparent;
-}
-ul::-ms-scrollbar-thumb {
-  background-color: #b0fccd;
-  border-radius: 10px;
-}
-
-body {
-  text-align: center;
-  font-size: 1.2em;
-  font-family: "Helvetica";
-  color: #44E394;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAG0lEQVQIW2P88OHDfwY0wAgSFBAQYEQWp1AQAKUbE9XRpv7GAAAAAElFTkSuQmCC) repeat;
-  padding: 2em;
-}
 </style>
-<div data-ng-app='sarusApp'>
-  <div data-ng-controller='GetController'>
-    <ul class='hello' when-scrolled='more()'>
-      <li data-ng-repeat='item in items track by $index'>
-        {{item}}
-      </li>
-    </ul>
-    <div data-ng-show='loading'>Loading</div>
-  </div>
+<div class="chat" infinite-scroll="vm.loadMore(vm.pageNumber, vm.numberOfRecordsPerPage)">
+    <div>
+        <div class="item" ng-repeat="item in vm.listing track by $index">
+          <sarus-item update-url="hello-{{$index}}" sarus-template="app/controller/get-view.tpl.html"
+            item="item" >
+          </sarus-item>
+        </div>
+    </div>
 </div>
-<h1>INFINITE SCROLLING IN ANGULARJS</h1>

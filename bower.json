@@ -24,6 +24,6 @@
   "dependencies": {
     "angular": "^1.5.8",
     "angular-ui-router": "^0.3.1",
-    "angular-ui-scroll": "^1.5.1"
+    "angular-material": "^1.1.1"
   }
 }

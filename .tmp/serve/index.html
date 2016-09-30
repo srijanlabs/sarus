@@ -2,10 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <base href="/">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -14,6 +16,8 @@
     <!-- css files will be automatically insert here -->
     <!-- endinject -->
     <!-- endbuild -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+    </script>
     <title>Document</title>
   </head>
   <body ng-app="sarusApp">
@@ -22,18 +26,25 @@
     <!-- bower:js -->
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.js"></script>
+    <script src="../bower_components/angular-material/angular-material.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
     <!-- inject:js -->
     <script src="app/app.module.js"></script>
-    <script src="app/service/test.service.js"></script>
-    <script src="app/service/something.service.js"></script>
+    <script src="app/service/listing.service.js"></script>
+    <script src="app/directive/updateUrl.directive.js"></script>
+    <script src="app/directive/sarusWrapper.directive.js"></script>
+    <script src="app/directive/infiniteScroll.directive.js"></script>
+    <script src="app/directive/ads.directive.js"></script>
+    <script src="app/controller/get.router.js"></script>
+    <script src="app/controller/get.controller.js"></script>
     <script src="app/core/constant.js"></script>
     <script src="app/core/config.js"></script>
-    <script src="app/controller/post.router.js"></script>
-    <script src="app/controller/post.controller.js"></script>
     <!-- endinject -->
 
     <!-- inject:partials -->
