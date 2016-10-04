@@ -1,9 +1,9 @@
 angular.module('sarusApp')
-  .controller("GetController", function(SarusFetch, $sce, common) {
+  .controller("GetController", function(SarusFetch, $sce, COMMON) {
     var vm = this;
     vm.trustAsHtml = $sce.trustAsHtml;
     vm.pageNumber = 1;
-    vm.numberOfRecordsPerPage = common.numberOfRecordsPerPage;
+    vm.numberOfRecordsPerPage = COMMON.numberOfRecordsPerPage;
     vm.nids = [{
       "nid": "21700"
     }, {

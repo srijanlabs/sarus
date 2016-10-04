@@ -1,7 +1,8 @@
 (function(module) {
-  module.constant('common', {
+  module.constant('COMMON', {
     numberOfRecordsPerPage: 1,
-    URL: 'http://sarus-openredesign.pantheonsite.io/api/'
+    ServerURL: 'http://sarus-openredesign.pantheonsite.io/api/',
+    FrontEndURLPattern: '/index/:q'
   });
   module.constant('adInfo', {
     clientId: 'ca-pub-7338620685919200'
