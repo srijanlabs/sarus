@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "SEO friendly continuous-scroll framework for online publishing",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
+  "scripts": {},
   "dependencies": {
     "express": "^4.2.0",
     "gzippo": "^0.2.0",
