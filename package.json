@@ -4,11 +4,18 @@
   "description": "SEO friendly continuous-scroll framework for online publishing",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
     "postinstall": "bower cache clean && bower install"
   },
+  "dependencies": {
+    "express": "^4.2.0",
+    "gzippo": "^0.2.0",
+    "morgan": "^1.7.0"
+  },
+  "engines": {
+    "node": "5.*"
+  },
   "devDependencies": {
-
     "estraverse": "~4.1.0",
     "gulp": "~3.9.0",
     "gulp-autoprefixer": "~3.0.2",
