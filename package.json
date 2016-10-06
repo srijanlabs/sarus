@@ -4,8 +4,7 @@
   "description": "SEO friendly continuous-scroll framework for online publishing",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "postinstall": "bower cache clean && bower install"
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "^4.2.0",
@@ -13,7 +12,7 @@
     "morgan": "^1.7.0"
   },
   "engines": {
-    "node": "5.*"
+    "node": "5"
   },
   "devDependencies": {
     "estraverse": "~4.1.0",
