@@ -253,7 +253,7 @@ p {
 
 
 </style>
-<div class="container" infinite-scroll-distance='50' infinite-scroll-disabled='vm.sarus.busy'
+<div class="container" infinite-scroll-distance='100' infinite-scroll-disabled='vm.sarus.busy'
   infinite-scroll="vm.sarus.nextPage(vm.nids[vm.sarus.index].nid)">
   <div>
     <div class="item" update-url="url-{{$index}}" ng-repeat="item in vm.sarus.items track by $index">
