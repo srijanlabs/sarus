@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+    <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js">
+    </script>
+    <script>
+     var googletag = googletag || {};
+     googletag.cmd = googletag.cmd || [];
+    </script>
+    <title>Document</title>
+  </head>
+  <body ng-app="sarusApp">
+
+    <ui-view></ui-view>
+    <!-- build:js(src) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <script src="app/app.module.js"></script>
+    <script src="app/service/listing.service.js"></script>
+    <script src="app/directive/updateUrl.directive.js"></script>
+    <script src="app/directive/sarusWrapper.directive.js"></script>
+    <script src="app/directive/infiniteScroll.directive.js"></script>
+    <script src="app/directive/ads.directive.js"></script>
+    <script src="app/core/constant.js"></script>
+    <script src="app/core/config.js"></script>
+    <script src="app/controller/get.router.js"></script>
+    <script src="app/controller/get.controller.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+  </body>
+</html>
