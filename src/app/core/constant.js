@@ -2,10 +2,10 @@
   module.constant('COMMON', {
     numberOfRecordsPerPage: 1,
     ServerURL: 'http://sarus-openredesign.pantheonsite.io/api/',
-    FrontEndURLPattern: '/:q',
+    FrontEndURLPattern: '/news/:q',
     query: 'q'
   });
   module.constant('adInfo', {
-    clientId: 'ca-pub-7338620685919200'
+    clientId: ''
   })
 })(angular.module('sarusApp'));

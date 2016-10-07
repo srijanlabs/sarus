@@ -3,7 +3,8 @@
     COMMON) {
     var currentState = $state.current;
     var stateName = currentState && currentState.name;
-    console.log(currentState);
+    var query = COMMON.query;
+    var obj = {};
     return {
       restrict: 'A',
       scope: {
@@ -17,9 +18,8 @@
           var elIn = (top >= 0 && top <= $window.innerHeight);
           scope.$apply();
           if (elIn) {
-            $state.transitionTo(stateName, {
-              q: scope.updateUrl
-            }, {
+            obj[query] = scope.updateUrl;
+            $state.transitionTo(stateName, obj, {
               location: true,
               notify: false,
               reload: false
