@@ -6,6 +6,6 @@
     query: 'q'
   });
   module.constant('adInfo', {
-    networkCode: ''
+    networkCode: '/6355419/Travel/Europe/France/Paris' // please replace this test network code
   })
 })(angular.module('sarusApp'));
