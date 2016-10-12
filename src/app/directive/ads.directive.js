@@ -19,7 +19,7 @@
             }
             googletag.cmd.push(function() {
               var adSlot1 = googletag.defineSlot(
-                '/214024014/side', adSize,
+                adInfo.networkCode, adSize,
                 containerId
               ).addService(googletag.pubads());
               googletag.pubads().enableSingleRequest();
