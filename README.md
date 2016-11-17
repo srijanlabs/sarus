@@ -66,4 +66,4 @@ Sarus will run with its default setup. But you can configure it by opening up th
 
 
 ####Developed by
-[Joseph Dias](josephdias92.github.io)
+[Joseph Dias](https://josephdias92.github.io)
